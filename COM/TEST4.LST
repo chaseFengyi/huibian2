@@ -1,0 +1,76 @@
+Microsoft (R) Macro Assembler Version 5.00                  11/17/14 22:21:10
+                                                             Page     1-1
+
+
+ 0000				DATA    SEGMENT 
+ 0000  6E 52 94 52 6E		ATRI    DB 6EH,52H,94H,52H,6EH 
+ 0005				DATA    ENDS 
+ 0000				STACK   SEGMENT PARA    STACK  'STACK' 
+ 0000  00C8[			        DB  200  DUP(0) 
+	   00			
+			 ]	
+				
+ 00C8				STACK   ENDS 
+				 
+ 0000				CODE    SEGMENT 
+				        ASSUME CS:CODE,DS:DATA,SS:STACK 
+ 0000				START: 
+ 0000  B8 ---- R		        MOV AX,DATA 
+ 0003  8E D8			        MOV DS,AX 
+ 0005  B4 00			        MOV AH,0 
+ 0007  B0 03			        MOV AL,3 
+ 0009  CD 10			        INT 10H 
+ 000B  8D 36 0000 R		        LEA SI,ATRI 
+ 000F  BF 0005			        MOV DI,5 
+ 0012  BA 0A13			        MOV DX,0A13H 
+ 0015  B4 0F			        MOV AH,15 
+ 0017  CD 10			        INT 10H 
+ 0019				LP: 
+ 0019  B4 02			        MOV AH,2 
+ 001B  FE C2			        INC DL 
+ 001D  CD 10			        INT 10H 
+ 001F  B0 05			        MOV AL,5 
+ 0021  8A 1C			        MOV BL,[SI] 
+ 0023  B9 0001			        MOV CX,1 
+ 0026  B4 09			        MOV AH,9 
+ 0028  CD 10			        INT 10H 
+ 002A  46			        INC SI 
+ 002B  4F			        DEC DI 
+ 002C  75 EB			        JNZ LP 
+ 002E  B4 4C			        MOV AH,4CH 
+ 0030  CD 21			        INT 21H 
+ 0032				CODE ENDS 
+				        END START 
+Microsoft (R) Macro Assembler Version 5.00                  11/17/14 22:21:10
+                                                             Symbols-1
+
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+CODE . . . . . . . . . . . . . .  	0032	PARA	NONE	
+DATA . . . . . . . . . . . . . .  	0005	PARA	NONE	
+STACK  . . . . . . . . . . . . .  	00C8	PARA	STACK	'STACK'
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+ATRI . . . . . . . . . . . . . .  	L BYTE	0000	DATA
+
+LP . . . . . . . . . . . . . . .  	L NEAR	0019	CODE
+
+START  . . . . . . . . . . . . .  	L NEAR	0000	CODE
+
+@FILENAME  . . . . . . . . . . .  	TEXT  TEST4		
+
+
+     36 Source  Lines
+     36 Total   Lines
+      8 Symbols
+
+  49728 + 415616 Bytes symbol space free
+
+      0 Warning Errors
+      0 Severe  Errors

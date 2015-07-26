@@ -1,0 +1,116 @@
+Microsoft (R) Macro Assembler Version 5.00                  11/3/14 11:52:08
+                                                             Page     1-1
+
+
+ 0000				DATA SEGMENT 
+ 0000  31 2B 32 2B 2E 2E 2E	    INFOR DB "1+2+...+$" 
+       2B 24			
+ 0009  3D 24			    EQUAL DB "=$" 
+ 000B  0006[			    N DB 6 DUP(?) 
+	    ??			
+			 ]	
+				
+ 0011  0006[			    SUM DB 6 DUP(?)  
+	    ??			
+			 ]	
+				
+ 0017				DATA ENDS 
+				 
+ 0000				CODE SEGMENT 
+				    ASSUME CS:CODE,DS:DATA 
+ 0000				START: 
+ 0000  B8 ---- R		    MOV AX,DATA 
+ 0003  8E D8			  	MOV DS,AX 
+ 0005  B8 0000				MOV AX,0 
+ 0008  BB 0001			    MOV BX,1 
+ 000B				LOOP1: 
+ 000B  03 C3				ADD AX,BX 
+ 000D  3D EA60				CMP AX,60000 
+ 0010  77 03				JA SHOW 
+ 0012  43				INC BX 
+ 0013  EB F6				JMP LOOP1 
+ 0015				SHOW: 
+ 0015  50				PUSH AX 
+ 0016  BA 0000 R			MOV DX,OFFSET INFOR 
+ 0019  B4 09				MOV AH,09H 
+ 001B  CD 21				INT 21H 
+ 001D  8B C3				MOV AX,BX 
+ 001F  B9 000A				MOV CX,10 
+ 0022  BB 0010 R			MOV BX,OFFSET N+5 
+ 0025  C6 07 24				MOV BYTE PTR[BX],'$' 
+ 0028					LOOP2: 
+ 0028  BA 0000					MOV DX,0 
+ 002B  F7 F1					DIV CX 
+ 002D  80 C2 30					ADD DL,30H 
+ 0030  4B					DEC BX 
+ 0031  88 17					MOV[BX],DL 
+ 0033  0B C0					OR AX,AX 
+ 0035  75 F1					JNZ LOOP2 
+ 0037  8B D3				MOV DX,BX 
+ 0039  B4 09				MOV AH,09H 
+ 003B  CD 21				INT 21H 
+ 003D  BA 0009 R			MOV DX,OFFSET EQUAL 
+ 0040  B4 09				MOV AH,09H 
+ 0042  CD 21				INT 21H 
+ 0044  58				POP AX 
+ 0045  BB 0016 R			MOV BX,OFFSET SUM+5 
+ 0048  C6 07 24				MOV BYTE PTR[BX],'$' 
+ 004B					LOOP3: 
+Microsoft (R) Macro Assembler Version 5.00                  11/3/14 11:52:08
+                                                             Page     1-2
+
+
+ 004B  BA 0000					MOV DX,0 
+ 004E  F7 F1					DIV CX 
+ 0050  80 C2 30					ADD DL,30H 
+ 0053  4B					DEC BX 
+ 0054  88 17					MOV [BX],DL 
+ 0056  0B C0					OR AX,AX 
+ 0058  75 F1					JNZ LOOP3 
+ 005A  8B D3				MOV DX,BX 
+ 005C  B4 09				MOV AH,09H 
+ 005E  CD 21				INT 21H 
+ 0060  B4 4C				MOV AH,4CH 
+ 0062  CD 21				INT 21H 
+ 0064				CODE ENDS 
+					END START 
+Microsoft (R) Macro Assembler Version 5.00                  11/3/14 11:52:08
+                                                             Symbols-1
+
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+CODE . . . . . . . . . . . . . .  	0064	PARA	NONE	
+DATA . . . . . . . . . . . . . .  	0017	PARA	NONE	
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+EQUAL  . . . . . . . . . . . . .  	L BYTE	0009	DATA
+
+INFOR  . . . . . . . . . . . . .  	L BYTE	0000	DATA
+
+LOOP1  . . . . . . . . . . . . .  	L NEAR	000B	CODE
+LOOP2  . . . . . . . . . . . . .  	L NEAR	0028	CODE
+LOOP3  . . . . . . . . . . . . .  	L NEAR	004B	CODE
+
+N  . . . . . . . . . . . . . . .  	L BYTE	000B	DATA	Length = 0006
+
+SHOW . . . . . . . . . . . . . .  	L NEAR	0015	CODE
+START  . . . . . . . . . . . . .  	L NEAR	0000	CODE
+SUM  . . . . . . . . . . . . . .  	L BYTE	0011	DATA	Length = 0006
+
+@FILENAME  . . . . . . . . . . .  	TEXT  EX42		
+
+
+     61 Source  Lines
+     61 Total   Lines
+     13 Symbols
+
+  49690 + 415750 Bytes symbol space free
+
+      0 Warning Errors
+      0 Severe  Errors

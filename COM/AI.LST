@@ -1,0 +1,1363 @@
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 23:30:48
+                                                             Page     1-1
+
+
+ 0000				DATA    SEGMENT 
+ 0000  0064[			        HENGX   DB 100 DUP('*')	 
+	   2A			
+			 ]	
+				
+ 0064  50 6C 65 61 73 65 20		TIS	DB "Please input the Tab to cha
+				nge$"	 
+       69 6E 70 75 74 20 74	
+       68 65 20 54 61 62 20	
+       74 6F 20 63 68 61 6E	
+       67 65 24			
+				 
+				;µ⁄“ª∏ˆ◊”≥Ã–Ú ˝æ›∂Œ****************************
+				***	 
+ 0083  54 6F 64 61 79 20 69		BUF1	DB "Today is:$" 
+       73 3A 24			
+ 008D  43 75 72 72 65 6E 74		BUF2	DB "Current time is:$" 
+       20 74 69 6D 65 20 69	
+       73 3A 24			
+ 009E  20 20 20 20 20 79 65		YEAR    DB 20H,20H,20H,20H,' year ','$'
+				 
+       61 72 20 24		
+ 00A9  20 20 20 6D 6F 6E 74		MONTH   DB 20H,20H,' month ','$' 
+       68 20 24			
+ 00B3  20 20 20 64 61 79 20		DAY	DB 20H,20H,' day ','$' 
+       24			
+ 00BB  20 20 3A 24			HOUR  	DB 20H,20H,':','$' 
+ 00BF  20 20 3A 24			MINUTE	DB 20H,20H,':','$' 
+ 00C3  20 20 3A 24			SECOND	DB 20H,20H,':','$' 
+ 00C7  20 20 24				MSECOND DB 20H,20H,'$' 
+ 00CA  20 20 20 77 65 65 6B		MSE	DB 20H,20H,' week ','$' 
+       20 24			
+ 00D3  20 50 72 65 73 73 20		INFOR   DB " Press any key to next...$"
+				 
+       61 6E 79 20 6B 65 79	
+       20 74 6F 20 6E 65 78	
+       74 2E 2E 2E 24		
+				;µ⁄∂˛∏ˆ◊”≥Ã–Ú ˝æ›∂Œ****************************
+				****** 
+ 00ED  50 6C 65 61 73 65 20		SINF1   DB "Please input a number:$" 
+       69 6E 70 75 74 20 61	
+       20 6E 75 6D 62 65 72	
+       3A 24			
+ 0104  54 68 65 20 72 65 73	        SINF2   DB "The result is:$" 
+       75 6C 74 20 69 73 3A	
+       24			
+ 0113  07 00			        SIBUF   DB 7,0,6 DUP(?) 
+       0006[			
+	    ??			
+			 ]	
+				
+ 011B  0006[			        SOBUF   DB 6 DUP(?) 
+	    ??			
+			 ]	
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 23:30:48
+                                                             Page     1-2
+
+
+				
+ 0121  33 36 31			        SNUM    DB 33H,36H,31H 
+				;µ⁄»˝∏ˆ◊”≥Ã–Ú ˝æ›∂Œ****************************
+				****** 
+ 0124  49 4E 50 55 54 28 3E		INPUT	DB "INPUT(>1):$" 
+AI.ASM(24): error A2024: Segment parameters are changed
+       31 29 3A 24		
+ 012F  21 00				STRING1	DB 33,0,32 DUP(?) 
+       0020[			
+	    ??			
+			 ]	
+				
+ 0151  0020[				STRING2	DB 32 DUP(?) 
+	    ??			
+			 ]	
+				
+ 0171  0020[				STRING3	DB 32 DUP(?) 
+	    ??			
+			 ]	
+				
+				;µ⁄Àƒ∏ˆ◊”≥Ã–Ú ˝æ›∂Œ****************************
+				****** 
+ 0191  0D 0A 57 45 4C 43 4F		INFO1     DB 0DH,0AH,'WELCOME YOU TO CO
+				ME HERE!$' 
+       4D 45 20 59 4F 55 20	
+       54 4F 20 43 4F 4D 45	
+       20 48 45 52 45 21 24	
+ 01AD  0D 0A 74 68 69 73 20	INFO2     DB 0DH,0AH,'this is a music program!$
+				' 
+       69 73 20 61 20 6D 75	
+       73 69 63 20 70 72 6F	
+       67 72 61 6D 21 24	
+ 01C8  0D 0A 70 6C 65 61 73	INFO3     DB 0DH,0AH,'please select!$' 
+       65 20 73 65 6C 65 63	
+       74 21 24			
+ 01D9  0D 0A 49 4E 50 55 54	INFO4     DB 0DH,0AH,'INPUT ERROR!$' 
+       20 45 52 52 4F 52 21	
+       24			
+ 01E8  0D 0A 50 4C 45 41 53	INFO5     DB 0DH,0AH,'PLEASE INPUT AGAIN!$' 
+       45 20 49 4E 50 55 54	
+       20 41 47 41 49 4E 21	
+       24			
+ 01FE  0D 0A 41 20 4D 55 53	MUSLIST   DB 0DH,0AH,'A MUSIC1' 
+       49 43 31			
+ 0208  0D 0A 42 20 4D 55 53	          DB 0DH,0AH,'B MUSIC2' 
+       49 43 32			
+ 0212  0D 0A 43 20 4D 55 53	          DB 0DH,0AH,'C MUSIC3' 
+       49 43 33			
+ 021C  0D 0A 51 20 45 58 49	          DB 0DH,0AH,'Q EXIT' 
+       54			
+ 0224  0D 0A 24			          db 0dh,0ah,'$' 
+				;“Ù¿÷“ª****************************************
+				***************** 
+ 0227  014A 0126 0106 0126	MUS_FREG1 DW 330,294,262,294,3 DUP (330) 
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 23:30:48
+                                                             Page     1-3
+
+
+       0003[			
+	   014A			
+			 ]	
+				
+ 0235  0003[			          DW 3 DUP (294),330,392,392 
+	   0126			
+			 ]	
+       014A 0188 0188		
+ 0241  014A 0126 0106 0126	          DW 330,294,262,294,4 DUP (330) 
+       0004[			
+	   014A			
+			 ]	
+				
+ 0251  0126 0126 014A 0126	          DW 294,294,330,294,262,-1 
+       0106 FFFF		
+ 025D  0006[			MUS_TIME1 DW 6 DUP (25),50 
+	   0019			
+			 ]	
+       0032			
+ 026B  0002[			          DW 2 DUP (25,25,50) 
+	   0019			
+	   0019			
+	   0032			
+			 ]	
+				
+ 0277  000C[			          DW 12 DUP (25),100 
+	   0019			
+			 ]	
+       0064			
+				;**********************************************
+				***********“Ù¿÷∂˛ 
+ 0291  014A 0188 014A 0126	MUS_FREG2 DW 330,392,330,294,330,392,330,294,33
+				0 
+       014A 0188 014A 0126	
+       014A			
+ 02A3  014A 0188 014A 0126	          DW 330,392,330,294,262,294,330,392,29
+				4 
+       0106 0126 014A 0188	
+       0126			
+ 02B5  0106 0106 00DC 00C4	          DW 262,262,220,196,196,220,262,294,33
+				2,262,-1 
+       00C4 00DC 0106 0126	
+       014C 0106 FFFF		
+ 02CB  0003[			MUS_TIME2 DW 3 DUP(50),25,25,50,25,25,100 
+	   0032			
+			 ]	
+       0019 0019 0032 0019	
+       0019 0064		
+ 02DD  0002[			          DW 2 DUP(50,50,25,25),100 
+	   0032			
+	   0032			
+	   0019			
+	   0019			
+			 ]	
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 23:30:48
+                                                             Page     1-4
+
+
+       0064			
+ 02EF  0003[			          DW 3 DUP(50,25,25),100 
+	   0032			
+	   0019			
+	   0019			
+			 ]	
+       0064			
+				;**********************************************
+				**********“Ù¿÷»˝ 
+ 0303  0106 0106 0126 0106	MUS_FREG3 DW 262,262,294,262,349 
+       015D			
+ 030D  014A 0106 0106 0126	          DW 330,262,262,294,262 
+       0106			
+ 0317  0188 015D 0106 0106	          DW 392,349,262,262,523 
+       020B			
+ 0321  01B8 015D 0106 0106	          DW 440,349,262,262,466 
+       01D2			
+ 032B  01D2 01B8 0106 0188	          DW 466,440,262,392,349,-1 
+       015D FFFF		
+				 
+ 0337  0032 0032 0064 0064	MUS_TIME3 DW 50,50,100,100,100 
+       0064			
+ 0341  0064 0064 0032 0032	          DW 100,100,50,50,100,100 
+       0064 0064		
+ 034D  0064 0064 0064 0032	          DW 100,100,100,50,50,100 
+       0032 0064		
+ 0359  0064 0064 0064 0064	          DW 100,100,100,100,100,50 
+       0064 0032		
+ 0365  0032 0064 0064 0064	          DW 50,100,100,100,100,100 
+       0064 0064		
+					 
+					 
+ 0371				DATA    ENDS 
+ 0000				CODE    SEGMENT 
+				        ASSUME CS:CODE,DS:DATA 
+ 0000  B8 ---- R		START:  MOV     AX,DATA 
+ 0003  8E D8			        MOV     DS,AX 
+				*****∂®“Â“ª∏ˆ∫Í***** 
+AI.ASM(73): warning A4001: Extra characters on line
+				SHOW      MACRO b 
+				          LEA DX,b 
+				          MOV AH,9 
+				          INT 21H 
+				          ENDM 
+				;**********************“Ù¿÷µÿ÷∑∫Í 
+				ADDRESS MACRO A,B 
+				LEA SI,A 
+				LEA BP,DS:B 
+				ENDM 
+				;∆¡ƒªœ‘ æ∑Ω Ω…Ë÷√∫Í÷∏¡ÓSETCRT 
+				SETCRT  MACRO 
+				        MOV     AH,0 
+				        MOV     AL,2 
+				        INT     10H 
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 23:30:48
+                                                             Page     1-5
+
+
+				        ENDM 
+				;«Â∆¡∫Í÷∏¡ÓCLEAR 
+				CLEAR   MACRO 
+				        MOV     AH,06H 
+				        MOV     AL,0 
+				        INT     10H 
+				        ENDM 
+				;…Ë÷√π‚±Í∫Í÷∏¡ÓCURSOR 
+				CURSOR  MACRO   ROW,CLM 
+					 
+				        MOV     AH,02H 
+				        MOV     BH,00H 
+				        MOV     DH,ROW 
+				        MOV     DL,CLM 
+					 
+				        INT     10H 
+				        ENDM 
+				;…Ë÷√–≈œ¢œ‘ æ∫Í÷∏¡ÓDSTRING 
+				DSTRING	MACRO	STRING 
+					PUSH	DX 
+					PUSH	AX 
+					MOV	DX,OFFSET STRING 
+					MOV	AH,09H 
+					INT	21H 
+					POP	AX 
+					POP	DX 
+					ENDM 
+					 
+ 0005  BB 0050 R			MOV     BX,OFFSET HENGX+80 
+ 0008  C6 07 24			        MOV     BYTE PTR[BX],'$' 
+					 
+ 000B  E8 0032 R		CHONGX:	CALL	PINGM 
+ 000E  B4 00				MOV	AH,0 
+ 0010  CD 16				INT	16H 
+ 0012  3C 09				CMP	AL,9H 
+ 0014  74 06				JE	TAB 
+ 0016  3C 1B				CMP	AL,27 
+ 0018  74 08				JE	TUIC 
+ 001A  EB EF				JMP	CHONGX 
+				 
+ 001C  E8 0032 R		TAB:    CALL	PINGM 
+				 
+ 001F  E8 00F2 R			CALL	FIRST 
+ 0022				TUIC:   SETCRT 
+ 0022  B4 00                 1	        MOV     AH,0 
+ 0024  B0 02                 1	        MOV     AL,2 
+ 0026  CD 10                 1	        INT     10H 
+					CLEAR 
+ 0028  B4 06                 1	        MOV     AH,06H 
+ 002A  B0 00                 1	        MOV     AL,0 
+ 002C  CD 10                 1	        INT     10H 
+ 002E  B4 4C				MOV     AH,4CH 
+ 0030  CD 21			        INT     21H 
+				 
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 23:30:48
+                                                             Page     1-6
+
+
+ 0032				PINGM	PROC	NEAR 
+				 
+ 0032  9C				PUSHF 
+ 0033  50				PUSH	AX 
+ 0034  53				PUSH	BX 
+ 0035  51				PUSH	CX 
+ 0036  52				PUSH	DX 
+				 
+				        SETCRT 
+ 0037  B4 00                 1	        MOV     AH,0 
+ 0039  B0 02                 1	        MOV     AL,2 
+ 003B  CD 10                 1	        INT     10H 
+				        CLEAR 
+ 003D  B4 06                 1	        MOV     AH,06H 
+ 003F  B0 00                 1	        MOV     AL,0 
+ 0041  CD 10                 1	        INT     10H 
+				        CURSOR  1,0		;…Ë÷√µ⁄“ªÃı∫·œﬂ
+				π‚±ÍŒª÷√ 
+ 0043  B4 02                 1	        MOV     AH,02H 
+			     1	‰)        MOV     DL,Å 
+AI.ASM(147): warning A4001: Extra characters on line
+			     1	
+AI.ASM(147): error A2106: Line too long
+				        DSTRING	HENGX		; ‰≥ˆµ⁄“ªÃı∫·œﬂ
+				 
+ 0045  52                    1		PUSH	DX 
+ 0046  50                    1		PUSH	AX 
+ 0047  BA 0000 R             1		MOV	DX,OFFSET HENGX 
+ 004A  B4 09                 1		MOV	AH,09H 
+ 004C  CD 21                 1		INT	21H 
+ 004E  58                    1		POP	AX 
+ 004F  5A                    1		POP	DX 
+					CURSOR	11,0		;…Ë÷√µ⁄∂˛Ãı∫·œﬂ
+				π‚±ÍŒª÷√ 
+ 0050  B4 02                 1	        MOV     AH,02H 
+			     1	‰)        MOV     DL,Å 
+AI.ASM(149): warning A4001: Extra characters on line
+			     1	
+AI.ASM(149): error A2106: Line too long
+					DSTRING	HENGX		; ‰≥ˆµ⁄∂˛Ãı∫·œﬂ
+				 
+ 0052  52                    1		PUSH	DX 
+ 0053  50                    1		PUSH	AX 
+ 0054  BA 0000 R             1		MOV	DX,OFFSET HENGX 
+ 0057  B4 09                 1		MOV	AH,09H 
+ 0059  CD 21                 1		INT	21H 
+ 005B  58                    1		POP	AX 
+ 005C  5A                    1		POP	DX 
+					CURSOR	22,0		;…Ë÷√µ⁄»˝Ãı∫·œﬂ
+				π‚±ÍŒª÷√ 
+ 005D  B4 02                 1	        MOV     AH,02H 
+			     1	‰)        MOV     DL,Å 
+AI.ASM(151): warning A4001: Extra characters on line
+			     1	
+AI.ASM(151): error A2106: Line too long
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 23:30:48
+                                                             Page     1-7
+
+
+					DSTRING	HENGX		; ‰≥ˆµ⁄»˝Ãı∫·œﬂ
+				 
+ 005F  52                    1		PUSH	DX 
+ 0060  50                    1		PUSH	AX 
+ 0061  BA 0000 R             1		MOV	DX,OFFSET HENGX 
+ 0064  B4 09                 1		MOV	AH,09H 
+ 0066  CD 21                 1		INT	21H 
+ 0068  58                    1		POP	AX 
+ 0069  5A                    1		POP	DX 
+					CURSOR	23,0 
+ 006A  B4 02                 1	        MOV     AH,02H 
+			     1	‰)        MOV     DL,Å 
+AI.ASM(153): warning A4001: Extra characters on line
+			     1	
+AI.ASM(153): error A2106: Line too long
+					DSTRING	TIS 
+ 006C  52                    1		PUSH	DX 
+ 006D  50                    1		PUSH	AX 
+ 006E  BA 0064 R             1		MOV	DX,OFFSET TIS 
+ 0071  B4 09                 1		MOV	AH,09H 
+ 0073  CD 21                 1		INT	21H 
+ 0075  58                    1		POP	AX 
+ 0076  5A                    1		POP	DX 
+ 0077  B9 0001				MOV	CX,1 
+					 
+				SHUX1:	CURSOR	CX,0		; ‰≥ˆµ⁄“ªÃı ˙œﬂ
+				 
+AI.ASM(157): error A2006: Phase error between passes
+ 009A  B4 02                 1	        MOV     AH,02H 
+			     1	‰)        MOV     DL,Å 
+AI.ASM(157): warning A4001: Extra characters on line
+			     1	
+AI.ASM(157): error A2106: Line too long
+ 009C  B2 2A				MOV	DL,'*' 
+ 009E  B4 02				MOV	AH,2 
+ 00A0  CD 21				INT	21H 
+ 00A2  41				INC	CX 
+ 00A3  83 F9 16				CMP	CX,22 
+ 00A6  75 F2				JNZ	SHUX1 
+				 
+ 00A8  B9 0001				MOV	CX,1 
+				SHUX2:	CURSOR	CX,40		; ‰≥ˆµ⁄∂˛Ãı ˙œﬂ
+				 
+AI.ASM(166): error A2006: Phase error between passes
+ 00B3  B4 02                 1	        MOV     AH,02H 
+			     1	‰)        MOV     DL,Å 
+AI.ASM(166): warning A4001: Extra characters on line
+			     1	
+AI.ASM(166): error A2106: Line too long
+ 00B5  B2 2A				MOV	DL,'*' 
+ 00B7  B4 02				MOV	AH,2 
+ 00B9  CD 21				INT	21H 
+ 00BB  41				INC	CX 
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 23:30:48
+                                                             Page     1-8
+
+
+ 00BC  83 F9 16				CMP	CX,22 
+ 00BF  75 F2				JNZ	SHUX2 
+				 
+ 00C1  B9 0001				MOV	CX,1 
+				SHUX3:	CURSOR	CX,79		; ‰≥ˆµ⁄»˝Ãı ˙œﬂ
+				 
+AI.ASM(175): error A2006: Phase error between passes
+ 00CC  B4 02                 1	        MOV     AH,02H 
+			     1	‰)        MOV     DL,Å 
+AI.ASM(175): warning A4001: Extra characters on line
+			     1	
+AI.ASM(175): error A2106: Line too long
+ 00CE  B2 2A				MOV	DL,'*' 
+ 00D0  B4 02				MOV	AH,2 
+ 00D2  CD 21				INT	21H 
+ 00D4  41				INC	CX 
+ 00D5  83 F9 16				CMP	CX,22 
+ 00D8  75 F2				JNZ	SHUX3 
+					 
+					CURSOR	23,30 
+ 00DA  B4 02                 1	        MOV     AH,02H 
+			     1	‰)        MOV     DL,Å 
+AI.ASM(183): warning A4001: Extra characters on line
+			     1	
+AI.ASM(183): error A2106: Line too long
+					 
+ 00DC  5A				POP	DX 
+ 00DD  59				POP	CX 
+ 00DE  5B				POP	BX 
+ 00DF  58				POP	AX 
+ 00E0  9D				POPF 
+ 00E1  C3				RET 
+ 00E2				PINGM	ENDP 
+AI.ASM(191): error A2006: Phase error between passes
+				;µ⁄“ª∏ˆ∆¡ƒª…œµƒ◊”≥Ã–Ú£¨”√¿¥œ‘ æ ±∆⁄∫Õ ±º‰******
+				*********************************	 
+				FIRST	PROC	NEAR	 
+AI.ASM(193): error A2006: Phase error between passes
+ 00F2  9C				PUSHF 
+ 00F3  50				PUSH	AX 
+ 00F4  53				PUSH	BX 
+ 00F5  51				PUSH	CX 
+ 00F6  52				PUSH	DX 
+					 
+				TIMER1	MACRO 	REG, ADR	;Ω´ºƒ¥Ê∆˜÷–¥Ê∑≈
+				µƒ∂˛Ω¯÷∆ ˝◊™ªªŒ™ASCII¬Î≤¢¥Êƒ⁄¥Ê÷– 
+				        PUSH	AX 
+				        PUSH  	BX 
+				        LEA  	SI, ADR 
+				        MOV  	AL, REG 
+				        MOV  	AH, 00 
+				        MOV   	BL, 10 
+				        DIV   	BL 
+				        ADD  	AL, 30H 
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 23:30:48
+                                                             Page     1-9
+
+
+				        MOV     [SI], AL          
+				        ADD  	AH, 30H 
+				        INC   	SI 
+				        MOV   	[SI], AH 
+				        POP   	BX 
+				        POP   	AX 
+				        ENDM 
+						 
+					CURSOR	2,2		 
+ 00F7  B4 02                 1	        MOV     AH,02H 
+			     1	‰)        MOV     DL,Å 
+AI.ASM(217): warning A4001: Extra characters on line
+			     1	
+AI.ASM(217): error A2106: Line too long
+					DSTRING BUF1 
+ 00F9  52                    1		PUSH	DX 
+ 00FA  50                    1		PUSH	AX 
+ 00FB  BA 0083 R             1		MOV	DX,OFFSET BUF1 
+ 00FE  B4 09                 1		MOV	AH,09H 
+ 0100  CD 21                 1		INT	21H 
+ 0102  58                    1		POP	AX 
+ 0103  5A                    1		POP	DX 
+				        CURSOR	6,2	 
+ 0104  B4 02                 1	        MOV     AH,02H 
+			     1	‰)        MOV     DL,Å 
+AI.ASM(219): warning A4001: Extra characters on line
+			     1	
+AI.ASM(219): error A2106: Line too long
+				        DSTRING INFOR 
+ 0106  52                    1		PUSH	DX 
+ 0107  50                    1		PUSH	AX 
+ 0108  BA 00D3 R             1		MOV	DX,OFFSET INFOR 
+ 010B  B4 09                 1		MOV	AH,09H 
+ 010D  CD 21                 1		INT	21H 
+ 010F  58                    1		POP	AX 
+ 0110  5A                    1		POP	DX 
+ 0121  B4 2A			LOOPR: 	MOV	AH, 2AH 
+AI.ASM(221): error A2006: Phase error between passes
+ 0123  CD 21			        INT    	21H		;»°µ±«∞»’∆⁄
+					 
+ 0125  51				PUSH	CX 
+ 0126  8A E8			        MOV     CH,AL 
+				        TIMER1  CH,MSE 		;Ω´–«∆⁄÷µ◊™ªªŒ™
+				ASCII¬Î≤¢¥Ê∑≈‘⁄MSEµ•‘™÷– 
+ 0128  50                    1	        PUSH	AX 
+ 0129  53                    1	        PUSH  	BX 
+ 012A  8D 36 00CA R          1	        LEA  	SI, MSE 
+ 012E  8A C5                 1	        MOV  	AL, CH 
+ 0130  B4 00                 1	        MOV  	AH, 00 
+ 0132  B3 0A                 1	        MOV   	BL, 10 
+ 0134  F6 F3                 1	        DIV   	BL 
+ 0136  04 30                 1	        ADD  	AL, 30H 
+ 0138  88 04                 1	        MOV     [SI], AL 
+ 013A  80 C4 30              1	        ADD  	AH, 30H 
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 23:30:48
+                                                             Page     1-10
+
+
+ 013D  46                    1	        INC   	SI 
+ 013E  88 24                 1	        MOV   	[SI], AH 
+ 0140  5B                    1	        POP   	BX 
+ 0141  58                    1	        POP   	AX 
+ 0142  8A EA			        MOV  	CH,DL  
+				        TIMER1 	CH,DAY		;Ω´º∏∫≈◊™ªªŒ™AS
+				CII¬Î≤¢¥Ê∑≈‘⁄DAY÷–		 
+ 0144  50                    1	        PUSH	AX 
+ 0145  53                    1	        PUSH  	BX 
+ 0146  8D 36 00B3 R          1	        LEA  	SI, DAY 
+ 014A  8A C5                 1	        MOV  	AL, CH 
+ 014C  B4 00                 1	        MOV  	AH, 00 
+ 014E  B3 0A                 1	        MOV   	BL, 10 
+ 0150  F6 F3                 1	        DIV   	BL 
+ 0152  04 30                 1	        ADD  	AL, 30H 
+ 0154  88 04                 1	        MOV     [SI], AL 
+ 0156  80 C4 30              1	        ADD  	AH, 30H 
+ 0159  46                    1	        INC   	SI 
+ 015A  88 24                 1	        MOV   	[SI], AH 
+ 015C  5B                    1	        POP   	BX 
+ 015D  58                    1	        POP   	AX 
+ 015E  59			        POP	CX 
+				        TIMER1  DH,MONTH	;Ω´‘¬∑›◊™ªªŒ™AS
+				CII¬Î≤¢¥Ê∑≈‘⁄MONTH÷–         
+ 015F  50                    1	        PUSH	AX 
+ 0160  53                    1	        PUSH  	BX 
+ 0161  8D 36 00A9 R          1	        LEA  	SI, MONTH 
+ 0165  8A C6                 1	        MOV  	AL, DH 
+ 0167  B4 00                 1	        MOV  	AH, 00 
+ 0169  B3 0A                 1	        MOV   	BL, 10 
+ 016B  F6 F3                 1	        DIV   	BL 
+ 016D  04 30                 1	        ADD  	AL, 30H 
+ 016F  88 04                 1	        MOV     [SI], AL 
+ 0171  80 C4 30              1	        ADD  	AH, 30H 
+ 0174  46                    1	        INC   	SI 
+ 0175  88 24                 1	        MOV   	[SI], AH 
+ 0177  5B                    1	        POP   	BX 
+ 0178  58                    1	        POP   	AX 
+					 
+ 0179  8B C1				MOV 	AX,CX 
+ 017B  B9 000A				MOV 	CX,10 
+ 017E  8D 1E 00A2 R		        LEA	BX,YEAR+4 
+ 0182				LOOP1: 
+ 0182  BA 0000				MOV 	DX,0 
+ 0185  F7 F1				DIV 	CX 
+ 0187  80 C2 30				ADD 	DL,30H 
+ 018A  4B				DEC 	BX 
+ 018B  88 17				MOV	[BX],DL 
+ 018D  0B C0				OR 	AX,AX 
+ 018F  75 F1				JNZ 	LOOP1	 
+				 
+					CURSOR 	3,3		;…Ë÷√π‚±ÍŒª÷√œ‘
+				 æµ±«∞ ±∆⁄			 
+ 0191  B4 02                 1	        MOV     AH,02H 
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 23:30:48
+                                                             Page     1-11
+
+
+			     1	‰)        MOV     DL,Å 
+AI.ASM(243): warning A4001: Extra characters on line
+			     1	
+AI.ASM(243): error A2106: Line too long
+					DSTRING	YEAR 
+ 0193  52                    1		PUSH	DX 
+ 0194  50                    1		PUSH	AX 
+ 0195  BA 009E R             1		MOV	DX,OFFSET YEAR 
+ 0198  B4 09                 1		MOV	AH,09H 
+ 019A  CD 21                 1		INT	21H 
+ 019C  58                    1		POP	AX 
+ 019D  5A                    1		POP	DX 
+					DSTRING	MONTH 
+ 019E  52                    1		PUSH	DX 
+ 019F  50                    1		PUSH	AX 
+ 01A0  BA 00A9 R             1		MOV	DX,OFFSET MONTH 
+ 01A3  B4 09                 1		MOV	AH,09H 
+ 01A5  CD 21                 1		INT	21H 
+ 01A7  58                    1		POP	AX 
+ 01A8  5A                    1		POP	DX 
+				        DSTRING	DAY 
+ 01A9  52                    1		PUSH	DX 
+ 01AA  50                    1		PUSH	AX 
+ 01AB  BA 00B3 R             1		MOV	DX,OFFSET DAY 
+ 01AE  B4 09                 1		MOV	AH,09H 
+ 01B0  CD 21                 1		INT	21H 
+ 01B2  58                    1		POP	AX 
+ 01B3  5A                    1		POP	DX 
+				        DSTRING	MSE 
+ 01B4  52                    1		PUSH	DX 
+ 01B5  50                    1		PUSH	AX 
+ 01B6  BA 00CA R             1		MOV	DX,OFFSET MSE 
+ 01B9  B4 09                 1		MOV	AH,09H 
+ 01BB  CD 21                 1		INT	21H 
+ 01BD  58                    1		POP	AX 
+ 01BE  5A                    1		POP	DX 
+				     	 
+				 
+				SHIJ:	CURSOR	4,2		 
+AI.ASM(250): error A2006: Phase error between passes
+ 01C7  B4 02                 1	        MOV     AH,02H 
+			     1	‰)        MOV     DL,Å 
+AI.ASM(250): warning A4001: Extra characters on line
+			     1	
+AI.ASM(250): error A2106: Line too long
+					DSTRING BUF2 
+ 01C9  52                    1		PUSH	DX 
+ 01CA  50                    1		PUSH	AX 
+ 01CB  BA 008D R             1		MOV	DX,OFFSET BUF2 
+ 01CE  B4 09                 1		MOV	AH,09H 
+ 01D0  CD 21                 1		INT	21H 
+ 01D2  58                    1		POP	AX 
+ 01D3  5A                    1		POP	DX 
+ 01DC  B4 2C			LOOP2: 	MOV	AH, 2CH 
+AI.ASM(252): error A2006: Phase error between passes
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 23:30:48
+                                                             Page     1-12
+
+
+ 01DE  CD 21			        INT    	21H		 
+ 01E0  51				PUSH	CX 
+ 01E1  8A EA			        MOV     CH,DL 
+				        TIMER1  CH,MSECOND 	;Ω´∫¡√Î÷µ◊™ªªŒ™
+				ASCII¬Î≤¢¥Ê∑≈‘⁄MSECOND÷– 
+ 01E3  50                    1	        PUSH	AX 
+ 01E4  53                    1	        PUSH  	BX 
+ 01E5  8D 36 00C7 R          1	        LEA  	SI, MSECOND 
+ 01E9  8A C5                 1	        MOV  	AL, CH 
+ 01EB  B4 00                 1	        MOV  	AH, 00 
+ 01ED  B3 0A                 1	        MOV   	BL, 10 
+ 01EF  F6 F3                 1	        DIV   	BL 
+ 01F1  04 30                 1	        ADD  	AL, 30H 
+ 01F3  88 04                 1	        MOV     [SI], AL 
+ 01F5  80 C4 30              1	        ADD  	AH, 30H 
+ 01F8  46                    1	        INC   	SI 
+ 01F9  88 24                 1	        MOV   	[SI], AH 
+ 01FB  5B                    1	        POP   	BX 
+ 01FC  58                    1	        POP   	AX 
+ 01FD  8A EE			        MOV  	CH, DH  
+				        TIMER1 	CH, SECOND	;Ω´√Î÷µ◊™ªªŒ™AS
+				CII¬Î≤¢¥Ê∑≈‘⁄SECOND÷–		 
+ 01FF  50                    1	        PUSH	AX 
+ 0200  53                    1	        PUSH  	BX 
+ 0201  8D 36 00C3 R          1	        LEA  	SI, SECOND 
+ 0205  8A C5                 1	        MOV  	AL, CH 
+ 0207  B4 00                 1	        MOV  	AH, 00 
+ 0209  B3 0A                 1	        MOV   	BL, 10 
+ 020B  F6 F3                 1	        DIV   	BL 
+ 020D  04 30                 1	        ADD  	AL, 30H 
+ 020F  88 04                 1	        MOV     [SI], AL 
+ 0211  80 C4 30              1	        ADD  	AH, 30H 
+ 0214  46                    1	        INC   	SI 
+ 0215  88 24                 1	        MOV   	[SI], AH 
+ 0217  5B                    1	        POP   	BX 
+ 0218  58                    1	        POP   	AX 
+ 0219  59			        POP	CX 
+				       	TIMER1	CL,MINUTE	;Ω´∑÷÷µ◊™ªªŒ™AS
+				CII¬Î≤¢¥Ê∑≈‘⁄MINUTE÷–		 
+ 021A  50                    1	        PUSH	AX 
+ 021B  53                    1	        PUSH  	BX 
+ 021C  8D 36 00BF R          1	        LEA  	SI, MINUTE 
+ 0220  8A C1                 1	        MOV  	AL, CL 
+ 0222  B4 00                 1	        MOV  	AH, 00 
+ 0224  B3 0A                 1	        MOV   	BL, 10 
+ 0226  F6 F3                 1	        DIV   	BL 
+ 0228  04 30                 1	        ADD  	AL, 30H 
+ 022A  88 04                 1	        MOV     [SI], AL 
+ 022C  80 C4 30              1	        ADD  	AH, 30H 
+ 022F  46                    1	        INC   	SI 
+ 0230  88 24                 1	        MOV   	[SI], AH 
+ 0232  5B                    1	        POP   	BX 
+ 0233  58                    1	        POP   	AX 
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 23:30:48
+                                                             Page     1-13
+
+
+				      	TIMER1	CH,HOUR		;Ω´–° ±÷µ◊™ªªŒ™
+				ASCII¬Î≤¢¥Ê∑≈‘⁄HOUR÷– 
+ 0234  50                    1	        PUSH	AX 
+ 0235  53                    1	        PUSH  	BX 
+ 0236  8D 36 00BB R          1	        LEA  	SI, HOUR 
+ 023A  8A C5                 1	        MOV  	AL, CH 
+ 023C  B4 00                 1	        MOV  	AH, 00 
+ 023E  B3 0A                 1	        MOV   	BL, 10 
+ 0240  F6 F3                 1	        DIV   	BL 
+ 0242  04 30                 1	        ADD  	AL, 30H 
+ 0244  88 04                 1	        MOV     [SI], AL 
+ 0246  80 C4 30              1	        ADD  	AH, 30H 
+ 0249  46                    1	        INC   	SI 
+ 024A  88 24                 1	        MOV   	[SI], AH 
+ 024C  5B                    1	        POP   	BX 
+ 024D  58                    1	        POP   	AX 
+					CURSOR  5,3		;…Ë÷√π‚±ÍŒª÷√œ‘
+				 æµ±«∞ ±º‰		 
+ 024E  B4 02                 1	        MOV     AH,02H 
+			     1	‰)        MOV     DL,Å 
+AI.ASM(262): warning A4001: Extra characters on line
+			     1	
+AI.ASM(262): error A2106: Line too long
+					DSTRING	HOUR 
+ 0250  52                    1		PUSH	DX 
+ 0251  50                    1		PUSH	AX 
+ 0252  BA 00BB R             1		MOV	DX,OFFSET HOUR 
+ 0255  B4 09                 1		MOV	AH,09H 
+ 0257  CD 21                 1		INT	21H 
+ 0259  58                    1		POP	AX 
+ 025A  5A                    1		POP	DX 
+					DSTRING	MINUTE 
+ 025B  52                    1		PUSH	DX 
+ 025C  50                    1		PUSH	AX 
+ 025D  BA 00BF R             1		MOV	DX,OFFSET MINUTE 
+ 0260  B4 09                 1		MOV	AH,09H 
+ 0262  CD 21                 1		INT	21H 
+ 0264  58                    1		POP	AX 
+ 0265  5A                    1		POP	DX 
+				        DSTRING	SECOND 
+ 0266  52                    1		PUSH	DX 
+ 0267  50                    1		PUSH	AX 
+ 0268  BA 00C3 R             1		MOV	DX,OFFSET SECOND 
+ 026B  B4 09                 1		MOV	AH,09H 
+ 026D  CD 21                 1		INT	21H 
+ 026F  58                    1		POP	AX 
+ 0270  5A                    1		POP	DX 
+				        DSTRING	MSECOND 
+ 0271  52                    1		PUSH	DX 
+ 0272  50                    1		PUSH	AX 
+ 0273  BA 00C7 R             1		MOV	DX,OFFSET MSECOND 
+ 0276  B4 09                 1		MOV	AH,09H 
+ 0278  CD 21                 1		INT	21H 
+ 027A  58                    1		POP	AX 
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 23:30:48
+                                                             Page     1-14
+
+
+ 027B  5A                    1		POP	DX 
+					 
+ 027C  B4 0B				MOV 	AH,0BH		 
+ 027E  CD 21			    	INT   	21h 
+ 0280  3C 00			      	CMP   	AL,00H 
+ 0282  75 0B			        JNZ    	EXITT		 
+ 0284  E9 01DC R		     	JMP   	LOOP2	 
+ 028F  B4 00			EXITT:	MOV	AH,0 
+AI.ASM(273): error A2006: Phase error between passes
+ 0291  CD 16				INT	16H 
+ 0293  3C 09				CMP	AL,9H 
+ 0295  74 06				JE	TAB1 
+ 0297  3C 1B				CMP	AL,27 
+ 0299  74 05				JE	TUIC1 
+ 029B  EB F2				JMP	EXITT 
+ 029D  E8 02B6 R		TAB1:	CALL	SECONDS 
+ 02A0				TUIC1:	SETCRT 
+ 02A0  B4 00                 1	        MOV     AH,0 
+ 02A2  B0 02                 1	        MOV     AL,2 
+ 02A4  CD 10                 1	        INT     10H 
+					CLEAR 
+ 02A6  B4 06                 1	        MOV     AH,06H 
+ 02A8  B0 00                 1	        MOV     AL,0 
+ 02AA  CD 10                 1	        INT     10H 
+ 02AC  B4 4C				MOV	AH,4CH 
+ 02AE  CD 21				INT	21H 
+						 
+ 02B0  5A				POP	DX 
+ 02B1  59				POP	CX 
+ 02B2  5B				POP	BX 
+ 02B3  58				POP	AX 
+ 02B4  9D				POPF 
+ 02B5  C3				RET 
+ 02B6				FIRST	ENDP		 
+				;µ⁄“ª∏ˆ◊”≥Ã–ÚΩ· ¯¥¶****************************
+				****************************** 
+				 
+				;µ⁄∂˛∏ˆ◊”≥Ã–Ú£¨”√¿¥º∆À„1+2+...+nµƒ∫Õ***********
+				****************************** 
+ 02B6				SECONDS	PROC	NEAR 
+ 02B6  9C				PUSHF 
+ 02B7  50				PUSH	AX 
+ 02B8  53				PUSH	BX 
+ 02B9  51				PUSH	CX 
+ 02BA  52				PUSH	DX	 
+					CURSOR	3,42 
+ 02BB  B4 02                 1	        MOV     AH,02H 
+			     1	‰)        MOV     DL,Å 
+AI.ASM(302): warning A4001: Extra characters on line
+			     1	
+AI.ASM(302): error A2106: Line too long
+					DSTRING	SINF1 
+ 02BD  52                    1		PUSH	DX 
+ 02BE  50                    1		PUSH	AX 
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 23:30:48
+                                                             Page     1-15
+
+
+ 02BF  BA 00ED R             1		MOV	DX,OFFSET SINF1 
+ 02C2  B4 09                 1		MOV	AH,09H 
+ 02C4  CD 21                 1		INT	21H 
+ 02C6  58                    1		POP	AX 
+ 02C7  5A                    1		POP	DX 
+					CURSOR	4,42 
+ 02C8  B4 02                 1	        MOV     AH,02H 
+			     1	‰)        MOV     DL,Å 
+AI.ASM(304): warning A4001: Extra characters on line
+			     1	
+AI.ASM(304): error A2106: Line too long
+ 02CA  B4 0B				MOV 	AH,0BH		 
+ 02CC  CD 21			    	INT   	21h 
+ 02CE  3C 09				CMP	AL,9H 
+ 02D0  74 58				JE	TAB2 
+AI.ASM(308): error A2053: Jump out of range by 7 byte(s)
+ 02D2  BA 0113 R			MOV     DX,OFFSET SIBUF 
+ 02D5  B4 0A			        MOV     AH,0AH 
+ 02D7  CD 21			        INT     21H 
+ 02D9  8A 0E 0114 R			MOV     CL,SIBUF+1 
+ 02DD  B5 00			        MOV     CH,0 
+				        
+				         
+ 02DF  BE 0115 R		        MOV     SI,OFFSET SIBUF+2 
+ 02E2  B8 0000			        MOV     AX,0 
+ 02F5  BA 000A			SAGAIN: MOV     DX,10 
+AI.ASM(318): error A2006: Phase error between passes
+ 02F8  F7 E2			        MUL     DX 
+ 02FA  80 24 0F			        AND     BYTE PTR[SI],0FH 
+ 02FD  02 04			        ADD     AL,[SI] 
+ 02FF  80 D4 00			        ADC     AH,0 
+ 0302  46			        INC     SI 
+ 0303  E2 F0			        LOOP    SAGAIN 
+				 
+ 0305  8B C8			        MOV     CX,AX 
+ 0307  B8 0000			        MOV     AX,0 
+ 030A  BB 0001			        MOV     BX,1 
+ 030D  03 C3			SLOOP2: ADD     AX,BX 
+ 030F  43			        INC     BX 
+ 0310  E2 FB			        LOOP    SLOOP2 
+ 0312  BB 0120 R		        MOV     BX,OFFSET SOBUF+5 
+ 0315  C6 07 24			        MOV     BYTE PTR[BX],'$' 
+ 0318  B9 000A			        MOV     CX,10 
+ 031B  BA 0000			SLOOP1: MOV     DX,0 
+ 031E  F7 F1			        DIV     CX 
+ 0320  80 C2 30			        ADD     DL,30H 
+ 0323  4B			        DEC     BX 
+ 0324  88 17			        MOV     [BX],DL 
+ 0326  0B C0			        OR      AX,AX 
+ 0328  75 F1			        JNZ     SLOOP1 
+					CURSOR	5,42	 
+ 032A  B4 02                 1	        MOV     AH,02H 
+			     1	‰)        MOV     DL,Å 
+AI.ASM(342): warning A4001: Extra characters on line
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 23:30:48
+                                                             Page     1-16
+
+
+			     1	
+AI.ASM(342): error A2106: Line too long
+				      	DSTRING	SINF2 
+ 032C  52                    1		PUSH	DX 
+ 032D  50                    1		PUSH	AX 
+ 032E  BA 0104 R             1		MOV	DX,OFFSET SINF2 
+ 0331  B4 09                 1		MOV	AH,09H 
+ 0333  CD 21                 1		INT	21H 
+ 0335  58                    1		POP	AX 
+ 0336  5A                    1		POP	DX 
+				        DSTRING	SOBUF 
+ 0337  52                    1		PUSH	DX 
+ 0338  50                    1		PUSH	AX 
+ 0339  BA 011B R             1		MOV	DX,OFFSET SOBUF 
+ 033C  B4 09                 1		MOV	AH,09H 
+ 033E  CD 21                 1		INT	21H 
+ 0340  58                    1		POP	AX 
+ 0341  5A                    1		POP	DX 
+ 034A  B4 00			SHIS:	MOV	AH,0 
+AI.ASM(345): error A2006: Phase error between passes
+ 034C  CD 16				INT	16H 
+ 034E  3C 09				CMP	AL,9H 
+ 0350  74 06				JE	TAB2 
+ 0352  3C 1B				CMP	AL,27 
+ 0354  74 05				JE	TUIC2 
+ 0356  EB F2				JMP	SHIS 
+ 0358  E8 0371 R		TAB2:	CALL	THIRD 
+ 035B				TUIC2:	SETCRT 
+ 035B  B4 00                 1	        MOV     AH,0 
+ 035D  B0 02                 1	        MOV     AL,2 
+ 035F  CD 10                 1	        INT     10H 
+					CLEAR 
+ 0361  B4 06                 1	        MOV     AH,06H 
+ 0363  B0 00                 1	        MOV     AL,0 
+ 0365  CD 10                 1	        INT     10H 
+ 0367  B4 4C				MOV	AH,4CH 
+ 0369  CD 21				INT	21H 
+ 036B  5A				POP	DX 
+ 036C  59				POP	CX 
+ 036D  5B				POP	BX 
+ 036E  58				POP	AX 
+ 036F  9D				POPF 
+ 0370  C3				RET 
+ 0371				SECONDS	ENDP 
+				;µ⁄∂˛∏ˆ◊”≥Ã–ÚΩ· ¯******************************
+				******************** 
+				;µ⁄»˝∏ˆ◊”≥Ã–Ú£¨ ‰»Î“ª––◊÷∑˚£¨ƒÊ–Ú ‰≥ˆ**********
+				******************** 
+ 0371				THIRD	PROC	NEAR 
+ 0371  9C				PUSHF 
+ 0372  50				PUSH	AX 
+ 0373  53				PUSH	BX 
+ 0374  51				PUSH	CX 
+ 0375  52				PUSH	DX 
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 23:30:48
+                                                             Page     1-17
+
+
+ 0376  57				PUSH	DI 
+ 0377  56				PUSH	SI 
+					CURSOR	14,3 
+ 0378  B4 02                 1	        MOV     AH,02H 
+			     1	‰)        MOV     DL,Å 
+AI.ASM(374): warning A4001: Extra characters on line
+			     1	
+AI.ASM(374): error A2106: Line too long
+					DSTRING	INPUT 
+ 037A  52                    1		PUSH	DX 
+ 037B  50                    1		PUSH	AX 
+ 037C  BA 0124 R             1		MOV	DX,OFFSET INPUT 
+AI.ASM(375): error A2026: Reference to multidefined symbol
+ 037F  B4 09                 1		MOV	AH,09H 
+ 0381  CD 21                 1		INT	21H 
+ 0383  58                    1		POP	AX 
+ 0384  5A                    1		POP	DX 
+					CURSOR	15,3 
+ 0385  B4 02                 1	        MOV     AH,02H 
+			     1	‰)        MOV     DL,Å 
+AI.ASM(376): warning A4001: Extra characters on line
+			     1	
+AI.ASM(376): error A2106: Line too long
+ 0387  BA 012F R			MOV	DX,OFFSET STRING1 
+ 038A  B4 0A				MOV	AH,10 
+ 038C  CD 21				INT	21H 
+ 038E  8A 0E 0130 R			MOV 	CL,STRING1+1  
+ 0392  B5 00				MOV 	CH,0  
+ 0394  BE 012F R			MOV 	SI,OFFSET STRING1  
+ 0397  03 F1				ADD 	SI,CX  
+ 0399  46				INC 	SI  
+ 039A  BF 0171 R			MOV	DI,OFFSET STRING3 
+				TAGAIN:  
+AI.ASM(386): error A2006: Phase error between passes
+ 03AD  8A 04				MOV 	AL,[SI]  
+ 03AF  88 05				MOV	[DI],AL  
+ 03B1  4E				DEC 	SI  
+				 
+ 03B2  47				INC	DI 
+ 03B3  E2 F8				LOOP 	TAGAIN 
+ 03B5  C6 05 24				MOV	BYTE PTR [DI],'$' 
+					CURSOR	16,3 
+ 03B8  B4 02                 1	        MOV     AH,02H 
+			     1	‰)        MOV     DL,Å 
+AI.ASM(394): warning A4001: Extra characters on line
+			     1	
+AI.ASM(394): error A2106: Line too long
+					DSTRING	SINF2 
+ 03BA  52                    1		PUSH	DX 
+ 03BB  50                    1		PUSH	AX 
+ 03BC  BA 0104 R             1		MOV	DX,OFFSET SINF2 
+ 03BF  B4 09                 1		MOV	AH,09H 
+ 03C1  CD 21                 1		INT	21H 
+ 03C3  58                    1		POP	AX 
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 23:30:48
+                                                             Page     1-18
+
+
+ 03C4  5A                    1		POP	DX 
+					DSTRING	STRING3 
+ 03C5  52                    1		PUSH	DX 
+ 03C6  50                    1		PUSH	AX 
+ 03C7  BA 0171 R             1		MOV	DX,OFFSET STRING3 
+ 03CA  B4 09                 1		MOV	AH,09H 
+ 03CC  CD 21                 1		INT	21H 
+ 03CE  58                    1		POP	AX 
+ 03CF  5A                    1		POP	DX 
+ 03D8  B4 00			TSHIS:	MOV	AH,0 
+AI.ASM(397): error A2006: Phase error between passes
+ 03DA  CD 16				INT	16H 
+ 03DC  3C 09				CMP	AL,9H 
+ 03DE  74 06				JE	TAB3 
+ 03E0  3C 1B				CMP	AL,27 
+ 03E2  74 05				JE	TUIC3 
+ 03E4  EB F2				JMP	TSHIS 
+ 03E6  E8 0401 R		TAB3:	CALL	FOURTH 
+ 03E9				TUIC3:	SETCRT 
+ 03E9  B4 00                 1	        MOV     AH,0 
+ 03EB  B0 02                 1	        MOV     AL,2 
+ 03ED  CD 10                 1	        INT     10H 
+					CLEAR 
+ 03EF  B4 06                 1	        MOV     AH,06H 
+ 03F1  B0 00                 1	        MOV     AL,0 
+ 03F3  CD 10                 1	        INT     10H 
+ 03F5  B4 4C				MOV	AH,4CH 
+ 03F7  CD 21				INT	21H 
+ 03F9  5E				POP	SI 
+ 03FA  5F				POP	DI	 
+ 03FB  5A				POP	DX 
+ 03FC  59				POP	CX 
+ 03FD  5B				POP	BX 
+ 03FE  58				POP	AX 
+ 03FF  9D				POPF 
+ 0400  C3				RET 
+ 0401				THIRD	ENDP 
+				;µ⁄»˝∏ˆ◊”≥Ã–ÚΩ· ¯******************************
+				************* 
+ 0401				FOURTH	PROC	NEAR 
+ 0401  9C				PUSHF 
+ 0402  50				PUSH	AX 
+ 0403  53				PUSH	BX 
+ 0404  51				PUSH	CX 
+ 0405  52				PUSH	DX 
+					CURSOR	14,43 
+ 0406  B4 02                 1	        MOV     AH,02H 
+			     1	‰)        MOV     DL,Å 
+AI.ASM(425): warning A4001: Extra characters on line
+			     1	
+AI.ASM(425): error A2106: Line too long
+					show INFO1 
+ 0408  8D 16 0191 R          1	          LEA DX,INFO1 
+ 040C  B4 09                 1	          MOV AH,9 
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 23:30:48
+                                                             Page     1-19
+
+
+ 040E  CD 21                 1	          INT 21H 
+				          show INFO2 
+ 0410  8D 16 01AD R          1	          LEA DX,INFO2 
+ 0414  B4 09                 1	          MOV AH,9 
+ 0416  CD 21                 1	          INT 21H 
+				          show INFO3 
+ 0418  8D 16 01C8 R          1	          LEA DX,INFO3 
+ 041C  B4 09                 1	          MOV AH,9 
+ 041E  CD 21                 1	          INT 21H 
+				          show MUSLIST 
+ 0420  8D 16 01FE R          1	          LEA DX,MUSLIST 
+ 0424  B4 09                 1	          MOV AH,9 
+ 0426  CD 21                 1	          INT 21H 
+ 0428  B4 01			INPUT:    MOV AH,01H 
+AI.ASM(430): error A2024: Segment parameters are changed
+ 042A  CD 21			          INT 21H 
+ 042C  3C 51			          CMP AL,'Q' 
+ 042E  74 7D			          JZ retu 
+ 0430  3C 41			          CMP AL,'A' 
+ 0432  75 16			          JNZ B0 
+				          ADDRESS MUS_FREG1,MUS_TIME1 
+ 0434  8D 36 0227 R          1	LEA SI,MUS_FREG1 
+ 0438  8D 2E 025D R          1	LEA BP,DS:MUS_TIME1 
+ 043C  E8 04F2 R		          CALL MUSIC 
+ 043F  EB 2A 90			          JMP EXIT1 
+ 044A  3C 42			B0:       CMP AL,'B' 
+AI.ASM(439): error A2006: Phase error between passes
+ 044C  75 0E			          JNZ C0 
+				          ADDRESS MUS_FREG2,MUS_TIME2 
+ 044E  8D 36 0291 R          1	LEA SI,MUS_FREG2 
+ 0452  8D 2E 02CB R          1	LEA BP,DS:MUS_TIME2 
+ 0456  E8 04F2 R		          CALL MUSIC 
+ 0459  EB 10 90			          JMP EXIT1 
+ 045C  3C 43			C0:       CMP AL,'C' 
+ 045E  75 16			          JNZ exit 
+				          ADDRESS MUS_FREG3,MUS_TIME3 
+ 0460  8D 36 0303 R          1	LEA SI,MUS_FREG3 
+ 0464  8D 2E 0337 R          1	LEA BP,DS:MUS_TIME3 
+ 0468  E8 04F2 R		          CALL MUSIC 
+ 046B				EXIT1:    show INFO5 
+ 046B  8D 16 01E8 R          1	          LEA DX,INFO5 
+ 046F  B4 09                 1	          MOV AH,9 
+ 0471  CD 21                 1	          INT 21H 
+ 0473  E9 0124 R		          JMP INPUT 
+AI.ASM(449): error A2026: Reference to multidefined symbol
+ 0476				EXIT: 
+ 0476  FF 96 0000		          call clear 
+AI.ASM(451): error A2056: Immediate mode illegal
+				          show INFO4 
+ 047A  8D 16 01D9 R          1	          LEA DX,INFO4 
+ 047E  B4 09                 1	          MOV AH,9 
+ 0480  CD 21                 1	          INT 21H 
+				          show INFO5 
+ 0482  8D 16 01E8 R          1	          LEA DX,INFO5 
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 23:30:48
+                                                             Page     1-20
+
+
+ 0486  B4 09                 1	          MOV AH,9 
+ 0488  CD 21                 1	          INT 21H 
+				          show INFO1 
+ 048A  8D 16 0191 R          1	          LEA DX,INFO1 
+ 048E  B4 09                 1	          MOV AH,9 
+ 0490  CD 21                 1	          INT 21H 
+				          show INFO2 
+ 0492  8D 16 01AD R          1	          LEA DX,INFO2 
+ 0496  B4 09                 1	          MOV AH,9 
+ 0498  CD 21                 1	          INT 21H 
+				          show INFO3 
+ 049A  8D 16 01C8 R          1	          LEA DX,INFO3 
+ 049E  B4 09                 1	          MOV AH,9 
+ 04A0  CD 21                 1	          INT 21H 
+				          show MUSLIST 
+ 04A2  8D 16 01FE R          1	          LEA DX,MUSLIST 
+ 04A6  B4 09                 1	          MOV AH,9 
+ 04A8  CD 21                 1	          INT 21H 
+ 04AA  E9 0124 R		          jmp input 
+AI.ASM(458): error A2026: Reference to multidefined symbol
+ 04AD  B4 4C			RETU:     MOV AH,4CH 
+ 04AF  CD 21			          INT 21H 
+				;******************************************∑¢…˘
+				 
+ 04B1				GENSOUND PROC NEAR 
+ 04B1  50			          PUSH AX 
+ 04B2  53			          PUSH BX 
+ 04B3  51			          PUSH CX 
+ 04B4  52			          PUSH DX 
+ 04B5  57			          PUSH DI 
+ 04B6  B0 B6			          MOV AL,0B6H 
+ 04B8  E6 43			          OUT 43H,AL 
+ 04BA  BA 0012			          MOV DX,12H 
+ 04BD  B8 348C			          MOV AX,348ch 
+ 04C0  F7 F7			          DIV DI 
+ 04C2  E6 42			          OUT 42H,AL 
+ 04C4  8A C4			          MOV AL,AH 
+ 04C6  E6 42			          OUT 42H,AL 
+ 04C8  E4 61			          IN AL,61H 
+ 04CA  8A E0			          MOV AH,AL 
+ 04CC  0C 03			          OR AL,3 
+ 04CE  E6 61			          OUT 61H,AL 
+				 
+ 04D0  B9 0CF2			WAIT1:    MOV CX,3314 
+ 04D3  E8 04E3 R		          call waitf 
+ 04D6  4B			DELAY1:   DEC BX 
+ 04D7  75 F7			          JNZ WAIT1 
+ 04D9  8A C4			          MOV AL,AH 
+ 04DB  E6 61			          OUT 61H,AL 
+ 04DD  5F			          POP DI 
+ 04DE  5A			          POP DX 
+ 04DF  59			          POP CX 
+ 04E0  5B			          POP BX 
+ 04E1  58			          POP AX 
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 23:30:48
+                                                             Page     1-21
+
+
+ 04E2  C3			          RET 
+ 04E3				GENSOUND ENDP 
+				;******************************************** 
+ 04E3				waitf proc near 
+ 04E3  50			      push ax 
+ 04E4				waitf1: 
+ 04E4  E4 61			      in al,61h 
+ 04E6  24 10			      and al,10h 
+ 04E8  3A C4			      cmp al,ah 
+ 04EA  74 F8			      je waitf1 
+ 04EC  8A E0			      mov ah,al 
+ 04EE  E2 F4			      loop waitf1 
+ 04F0  58			      pop ax 
+ 04F1  C3			      ret 
+ 04F2				waitf endp 
+				 
+				;********************************************* 
+ 04F2				MUSIC   PROC NEAR 
+ 04F2  1E			          PUSH DS 
+ 04F3  2B C0			          SUB AX,AX 
+ 04F5  50			          PUSH AX 
+ 04F6  8B 3C			FREG:     MOV DI,[SI] 
+ 04F8  83 FF FF			          CMP DI,-1 
+ 04FB  74 0F			          JE END_MUS 
+ 04FD  3E: 8B 5E 00		          MOV BX,DS:[BP] 
+ 0501  E8 04B1 R		          CALL GENSOUND 
+ 0504  83 C6 02			          ADD SI,2 
+ 0507  83 C5 02			          ADD BP,2 
+ 050A  EB EA			          JMP FREG 
+ 050C				END_MUS: 
+ 050C  C3			          RET 
+ 050D				MUSIC    ENDP 
+				;**********************************************
+				**clear!!! 
+				clear proc near 
+AI.ASM(525): error A2015: Symbol already different kind: CLEAR
+ 050D  50			      push ax 
+ 050E  53			      push bx 
+ 050F  51			      push cx 
+ 0510  52			      push dx 
+ 0511  B4 06			      mov  ah,6 
+ 0513  B0 00			      mov al,0 
+ 0515  B5 00			      mov ch,0 
+ 0517  B1 00			      mov cl,0 
+ 0519  B6 18			      mov dh,24 
+ 051B  B2 4F			      mov dl,79 
+ 051D  B7 07			      mov bh,7 
+ 051F  CD 10			      int 10h 
+ 0521  5A			      pop dx 
+ 0522  59			      pop cx 
+ 0523  5B			      pop bx 
+ 0524  58			      pop ax 
+ 0525  C3			      ret 
+ 0526				clear endp 
+AI.ASM(543): error A2000: Block nesting error
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 23:30:48
+                                                             Page     1-22
+
+
+				 
+				 
+ 0526  CD 21			        INT 	21H 
+ 0528  5A				POP	DX 
+ 0529  59				POP	CX 
+ 052A  5B				POP	BX 
+ 052B  58				POP	AX 
+ 052C  9D				POPF 
+ 052D  C3				RET 
+				FOURTH	ENDP 
+AI.ASM(553): error A2000: Block nesting error
+ 052E				CODE    ENDS 
+				        END     START 
+
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 23:30:48
+                                                             Symbols-1
+
+
+Macros:
+
+		N a m e			Lines
+
+ADDRESS  . . . . . . . . . . . .  	   2
+CLEAR  . . . . . . . . . . . . .  	   5
+CURSOR . . . . . . . . . . . . .  	   4
+DSTRING  . . . . . . . . . . . .  	   7
+SETCRT . . . . . . . . . . . . .  	   3
+SHOW . . . . . . . . . . . . . .  	   3
+TIMER1 . . . . . . . . . . . . .  	  14
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+CODE . . . . . . . . . . . . . .  	052E	PARA	NONE	
+DATA . . . . . . . . . . . . . .  	0371	PARA	NONE	
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+B0 . . . . . . . . . . . . . . .  	L NEAR	044A	CODE
+BUF1 . . . . . . . . . . . . . .  	L BYTE	0083	DATA
+BUF2 . . . . . . . . . . . . . .  	L BYTE	008D	DATA
+
+C0 . . . . . . . . . . . . . . .  	L NEAR	045C	CODE
+CHONGX . . . . . . . . . . . . .  	L NEAR	000B	CODE
+
+DAY  . . . . . . . . . . . . . .  	L BYTE	00B3	DATA
+DELAY1 . . . . . . . . . . . . .  	L NEAR	04D6	CODE
+
+END_MUS  . . . . . . . . . . . .  	L NEAR	050C	CODE
+EXIT . . . . . . . . . . . . . .  	L NEAR	0476	CODE
+EXIT1  . . . . . . . . . . . . .  	L NEAR	046B	CODE
+EXITT  . . . . . . . . . . . . .  	L NEAR	028F	CODE
+
+FIRST  . . . . . . . . . . . . .  	N PROC	00F2	CODE	Length = 01C4
+FOURTH . . . . . . . . . . . . .  	N PROC	0401	CODE	Length = 0125
+FREG . . . . . . . . . . . . . .  	L NEAR	04F6	CODE
+
+GENSOUND . . . . . . . . . . . .  	N PROC	04B1	CODE	Length = 0032
+
+HENGX  . . . . . . . . . . . . .  	L BYTE	0000	DATA	Length = 0064
+HOUR . . . . . . . . . . . . . .  	L BYTE	00BB	DATA
+
+INFO1  . . . . . . . . . . . . .  	L BYTE	0191	DATA
+INFO2  . . . . . . . . . . . . .  	L BYTE	01AD	DATA
+INFO3  . . . . . . . . . . . . .  	L BYTE	01C8	DATA
+INFO4  . . . . . . . . . . . . .  	L BYTE	01D9	DATA
+INFO5  . . . . . . . . . . . . .  	L BYTE	01E8	DATA
+INFOR  . . . . . . . . . . . . .  	L BYTE	00D3	DATA
+INPUT  . . . . . . . . . . . . .  	L NEAR	0124	DATA
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 23:30:48
+                                                             Symbols-2
+
+
+
+LOOP1  . . . . . . . . . . . . .  	L NEAR	0182	CODE
+LOOP2  . . . . . . . . . . . . .  	L NEAR	01DC	CODE
+LOOPR  . . . . . . . . . . . . .  	L NEAR	0121	CODE
+
+MINUTE . . . . . . . . . . . . .  	L BYTE	00BF	DATA
+MONTH  . . . . . . . . . . . . .  	L BYTE	00A9	DATA
+MSE  . . . . . . . . . . . . . .  	L BYTE	00CA	DATA
+MSECOND  . . . . . . . . . . . .  	L BYTE	00C7	DATA
+MUSIC  . . . . . . . . . . . . .  	N PROC	04F2	CODE	Length = 001B
+MUSLIST  . . . . . . . . . . . .  	L BYTE	01FE	DATA
+MUS_FREG1  . . . . . . . . . . .  	L WORD	0227	DATA
+MUS_FREG2  . . . . . . . . . . .  	L WORD	0291	DATA
+MUS_FREG3  . . . . . . . . . . .  	L WORD	0303	DATA
+MUS_TIME1  . . . . . . . . . . .  	L WORD	025D	DATA	Length = 0006
+MUS_TIME2  . . . . . . . . . . .  	L WORD	02CB	DATA	Length = 0003
+MUS_TIME3  . . . . . . . . . . .  	L WORD	0337	DATA
+
+PINGM  . . . . . . . . . . . . .  	N PROC	0032	CODE	Length = 00B0
+
+RETU . . . . . . . . . . . . . .  	L NEAR	04AD	CODE
+
+SAGAIN . . . . . . . . . . . . .  	L NEAR	02F5	CODE
+SECOND . . . . . . . . . . . . .  	L BYTE	00C3	DATA
+SECONDS  . . . . . . . . . . . .  	N PROC	02B6	CODE	Length = 00BB
+SHIJ . . . . . . . . . . . . . .  	L NEAR	01C7	CODE
+SHIS . . . . . . . . . . . . . .  	L NEAR	034A	CODE
+SHUX1  . . . . . . . . . . . . .  	L NEAR	009A	CODE
+SHUX2  . . . . . . . . . . . . .  	L NEAR	00B3	CODE
+SHUX3  . . . . . . . . . . . . .  	L NEAR	00CC	CODE
+SIBUF  . . . . . . . . . . . . .  	L BYTE	0113	DATA
+SINF1  . . . . . . . . . . . . .  	L BYTE	00ED	DATA
+SINF2  . . . . . . . . . . . . .  	L BYTE	0104	DATA
+SLOOP1 . . . . . . . . . . . . .  	L NEAR	031B	CODE
+SLOOP2 . . . . . . . . . . . . .  	L NEAR	030D	CODE
+SNUM . . . . . . . . . . . . . .  	L BYTE	0121	DATA
+SOBUF  . . . . . . . . . . . . .  	L BYTE	011B	DATA	Length = 0006
+START  . . . . . . . . . . . . .  	L NEAR	0000	CODE
+STRING1  . . . . . . . . . . . .  	L BYTE	012F	DATA
+STRING2  . . . . . . . . . . . .  	L BYTE	0151	DATA	Length = 0020
+STRING3  . . . . . . . . . . . .  	L BYTE	0171	DATA	Length = 0020
+
+TAB  . . . . . . . . . . . . . .  	L NEAR	001C	CODE
+TAB1 . . . . . . . . . . . . . .  	L NEAR	029D	CODE
+TAB2 . . . . . . . . . . . . . .  	L NEAR	0358	CODE
+TAB3 . . . . . . . . . . . . . .  	L NEAR	03E6	CODE
+TAGAIN . . . . . . . . . . . . .  	L NEAR	03AD	CODE
+THIRD  . . . . . . . . . . . . .  	N PROC	0371	CODE	Length = 0090
+TIS  . . . . . . . . . . . . . .  	L BYTE	0064	DATA
+TSHIS  . . . . . . . . . . . . .  	L NEAR	03D8	CODE
+TUIC . . . . . . . . . . . . . .  	L NEAR	0022	CODE
+TUIC1  . . . . . . . . . . . . .  	L NEAR	02A0	CODE
+TUIC2  . . . . . . . . . . . . .  	L NEAR	035B	CODE
+TUIC3  . . . . . . . . . . . . .  	L NEAR	03E9	CODE
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 23:30:48
+                                                             Symbols-3
+
+
+
+WAIT1  . . . . . . . . . . . . .  	L NEAR	04D0	CODE
+WAITF  . . . . . . . . . . . . .  	N PROC	04E3	CODE	Length = 000F
+WAITF1 . . . . . . . . . . . . .  	L NEAR	04E4	CODE
+
+YEAR . . . . . . . . . . . . . .  	L B

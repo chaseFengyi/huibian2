@@ -1,0 +1,158 @@
+Microsoft (R) Macro Assembler Version 5.00                  11/22/14 20:11:22
+                                                             Page     1-1
+
+
+ 0000				STACK  SEGMENT stack 
+ 0000  0100[			        STL     DW 100H DUP(?) 
+	   ????			
+			 ]	
+				
+ 0200				STACK ENDS 
+				 
+ 0000				DATAS SEGMENT 
+				        ;POS DB COL,ROW,CHAR 
+				 
+ 0000  50 6C 65 61 73 65 20	        INFOR1 DB "Please Input HIGH:$" 
+       49 6E 70 75 74 20 48	
+       49 47 48 3A 24		
+ 0013  0A 0D 50 6C 65 61 73	        INFOR2 DB 0AH,0DH,"Please Input LENGTH:
+				$" 
+       65 20 49 6E 70 75 74	
+       20 4C 45 4E 47 54 48	
+       3A 24			
+ = 001E				        ITSLEFT=30 
+ = 0005				        ITSBUTTOM=5         
+ 002A  07 00			        ITSHIGH DB 7,0,6 DUP(?) 
+       0006[			
+	    ??			
+			 ]	
+				
+ 0032  07 00			        ITSLEN DB 7,0,6 DUP(?) 
+       0006[			
+	    ??			
+			 ]	
+				
+ = 002A				        ITSCHAR='*' 
+ 003A  00			        POS DB 0 
+				REPT ITSHIGH 
+TEST1.ASM(16): error A2042: Constant expected
+				        DB ITSLEFT,ITSBUTTOM,ITSCHAR 
+				        ITSLEFT=ITSLEFT+1 
+				        ITSBUTTOM=ITSBUTTOM+1 
+				        ENDM 
+ 003B				DATAS ENDS 
+				 
+ 0000				CODES SEGMENT 
+				        ASSUME CS:CODES,DS:DATAS,SS:STACK 
+ 0000				START: 
+ 0000  B8 ---- R		        MOV AX,DATAS 
+ 0003  8E D8			        MOV DS,AX 
+ 0005  8E C0			        MOV ES,AX 
+ 0007  B8 ---- R		        MOV AX,STACK 
+ 000A  8E D0			        MOV SS,AX 
+ 000C  BC 0100			        MOV SP,100H 
+				 
+ 000F  8D 36 003A R		        LEA SI,POS 
+ 0013  83 C6 01			        ADD SI,1 
+				 
+ 0016  BA 0000 R		        MOV DX,OFFSET INFOR1 
+Microsoft (R) Macro Assembler Version 5.00                  11/22/14 20:11:22
+                                                             Page     1-2
+
+
+ 0019  B4 09			        MOV AH,09H 
+ 001B  CD 21			        INT 21H 
+ 001D  BA 002A R		        MOV DX,OFFSET ITSHIGH 
+ 0020  B4 0A			        MOV AH,0AH 
+ 0022  CD 21			        INT 21H 
+ 0024  8A 0E 002B R		        MOV CL,ITSHIGH+1 
+ 0028  B5 00			        MOV CH,0 
+				 
+				 
+				        ;MOV CX,ITSHIGH 
+ 002A				C1: 
+ 002A  E8 0037 R		        CALL SHOWPOSCHAR 
+ 002D  83 C6 03			        ADD SI,3 
+ 0030  E2 F8			        LOOP C1 
+				 
+ 0032  B8 4C00			        MOV AX,4C00H 
+ 0035  CD 21			        INT 21H 
+ 0037				        SHOWPOSCHAR PROC 
+ 0037  50			        PUSH AX 
+ 0038  53			        PUSH BX 
+ 0039  51			        PUSH CX 
+ 003A  52			        PUSH DX 
+ 003B  B4 02			        MOV AH,02H 
+ 003D  B7 00			        MOV BH,00H 
+ 003F  8B 14			        MOV DX,[SI] 
+ 0041  CD 10			        INT 10H 
+ 0043  B4 09			        MOV AH,9 
+ 0045  8A 44 02			        MOV AL,2[SI] 
+ 0048  BB 0007			        MOV BX,0007H 
+				 
+ 004B  BA 0013 R		        MOV DX,OFFSET INFOR2 
+ 004E  B4 09			        MOV AH,09H 
+ 0050  CD 21			        INT 21H 
+ 0052  BA 0032 R		        MOV DX,OFFSET ITSLEN 
+ 0055  B4 0A			        MOV AH,0AH 
+ 0057  CD 21			        INT 21H 
+ 0059  8A 0E 0033 R		        MOV CL,ITSLEN+1 
+ 005D  B5 00			        MOV CH,0 
+				        
+				 
+				        ;MOV CX,ITSLEN 
+ 005F  CD 10			        INT 10H 
+ 0061  5A			        POP DX 
+ 0062  59			        POP CX 
+ 0063  5B			        POP BX 
+ 0064  58			        POP AX 
+ 0065  C3			        RET 
+				 
+				         
+				 
+ 0066				        SHOWPOSCHAR ENDP 
+ 0066				        CODES ENDS 
+				        END START 
+Microsoft (R) Macro Assembler Version 5.00                  11/22/14 20:11:22
+                                                             Symbols-1
+
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+CODES  . . . . . . . . . . . . .  	0066	PARA	NONE	
+DATAS  . . . . . . . . . . . . .  	003B	PARA	NONE	
+STACK  . . . . . . . . . . . . .  	0200	PARA	STACK	
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+C1 . . . . . . . . . . . . . . .  	L NEAR	002A	CODES
+
+INFOR1 . . . . . . . . . . . . .  	L BYTE	0000	DATAS
+INFOR2 . . . . . . . . . . . . .  	L BYTE	0013	DATAS
+ITSBUTTOM  . . . . . . . . . . .  	NUMBER	0005	
+ITSCHAR  . . . . . . . . . . . .  	NUMBER	002A	
+ITSHIGH  . . . . . . . . . . . .  	L BYTE	002A	DATAS
+ITSLEFT  . . . . . . . . . . . .  	NUMBER	001E	
+ITSLEN . . . . . . . . . . . . .  	L BYTE	0032	DATAS
+
+POS  . . . . . . . . . . . . . .  	L BYTE	003A	DATAS
+
+SHOWPOSCHAR  . . . . . . . . . .  	N PROC	0037	CODES	Length = 002F
+START  . . . . . . . . . . . . .  	L NEAR	0000	CODES
+STL  . . . . . . . . . . . . . .  	L WORD	0000	STACK	Length = 0100
+
+@FILENAME  . . . . . . . . . . .  	TEXT  TEST1		
+
+
+     89 Source  Lines
+     89 Total   Lines
+     17 Symbols
+
+  49654 + 415786 Bytes symbol space free
+
+      0 Warning Errors
+      1 Severe  Errors

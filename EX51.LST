@@ -1,0 +1,252 @@
+Microsoft (R) Macro Assembler Version 5.00                  11/3/14 11:38:08
+                                                             Page     1-1
+
+
+ = 000A				COUNT EQU 10 
+ 0000				DATA SEGMENT 
+				       ; MA DB 0         
+ 0000  000A[				NUM DB 10 DUP(?) 
+	    ??			
+			 ]	
+				
+ 000A  07 00				IBUF DB 7,0,6 DUP(?) 
+       0006[			
+	    ??			
+			 ]	
+				
+ 0012  0006[				OBUF DB 6 DUP(?) 
+	    ??			
+			 ]	
+				
+ 0018  50 6C 65 61 73 65 20	        INFOR1 DB "Please input 10 numbers:(<25
+				6)",0AH,ODH,'$' 
+       69 6E 70 75 74 20 31	
+       30 20 6E 75 6D 62 65	
+       72 73 3A 28 3C 32 35	
+       36 29 0A 00 24		
+EX51.ASM(7): error A2009: Symbol not defined: ODH
+ 0039  54 68 65 20 6D 61 78	        INFOR2 DB "The max found in the 10 numb
+				ers is:$" 
+       20 66 6F 75 6E 64 20	
+       69 6E 20 74 68 65 20	
+       31 30 20 6E 75 6D 62	
+       65 72 73 20 69 73 3A	
+       24			
+ 005D  00 0D 24			        INFOR3 DB OAH,0DH,'$' 
+EX51.ASM(9): error A2009: Symbol not defined: OAH
+ 0060				DATA ENDS 
+ 0000				STACK SEGMENT STACK 
+ 0000  0028[				DATA2 DW 40 DUP(?) 
+	   ????			
+			 ]	
+				
+ = 0028					TOP EQU LENGTH DATA2 
+ 0050				STACK ENDS 
+ 0000				CODE SEGMENT 
+					ASSUME CS:CODE,DS:DATA,SS:STACK 
+ 0000  B8 ---- R		START:  MOV AX,DATA 
+ 0003  8E D8				MOV DS,AX 
+ 0005  B8 ---- R			MOV AX,STACK 
+ 0008  8E D0				MOV SS,AX 
+ 000A  B8 0028				MOV AX,TOP 
+ 000D  8B E0				MOV SP,AX 
+				DSTRING MACRO STRING 
+					PUSH DX 
+					PUSH AX 
+				        MOV DX,STRING 
+				        MOV AH,9 
+					INT 21H 
+Microsoft (R) Macro Assembler Version 5.00                  11/3/14 11:38:08
+                                                             Page     1-2
+
+
+					POP AX 
+					POP DX 
+					ENDM 
+					DSTRING INFOR1 
+ 000F  52                    1		PUSH DX 
+ 0010  50                    1		PUSH AX 
+ 0011  8B 16 0018 R          1	        MOV DX,INFOR1 
+EX51.ASM(32): warning A4031: Operand types must match
+ 0015  B4 09                 1	        MOV AH,9 
+ 0017  CD 21                 1		INT 21H 
+ 0019  58                    1		POP AX 
+ 001A  5A                    1		POP DX 
+ 001B  BB 0000 R			MOV BX,OFFSET NUM 
+ 001E  B9 000A				MOV CX,COUNT 
+ 0021  E8 0000 U		LOOP1:  CALL STOB 
+EX51.ASM(35): error A2009: Symbol not defined: STOB
+					DSTRING INFOR3 
+ 0024  52                    1		PUSH DX 
+ 0025  50                    1		PUSH AX 
+ 0026  8B 16 005D R          1	        MOV DX,INFOR3 
+EX51.ASM(36): warning A4031: Operand types must match
+ 002A  B4 09                 1	        MOV AH,9 
+ 002C  CD 21                 1		INT 21H 
+ 002E  58                    1		POP AX 
+ 002F  5A                    1		POP DX 
+ 0030  88 07				MOV [BX],AL 
+ 0032  43				INC BX 
+ 0033  E2 EC				LOOP LOOP1 
+ 0035  B8 0000 R			MOV AX,OFFSET NUM 
+ 0038  50				PUSH AX	 
+ 0039  B9 000A				MOV CX,COUNT 
+ 003C  51				PUSH CX 
+ 003D  E8 0084 R			CALL FMAX 
+					DSTRING INFOR2 
+ 0040  52                    1		PUSH DX 
+ 0041  50                    1		PUSH AX 
+ 0042  8B 16 0039 R          1	        MOV DX,INFOR2 
+EX51.ASM(45): warning A4031: Operand types must match
+ 0046  B4 09                 1	        MOV AH,9 
+ 0048  CD 21                 1		INT 21H 
+ 004A  58                    1		POP AX 
+ 004B  5A                    1		POP DX 
+ 004C  E8 009E R			CALL BTOAD 
+ 004F  B4 4C				MOV AH,4CH 
+ 0051  CD 21				INT 21H 
+ 0053				        DTOB PROC 
+ 0053  51				PUSH CX 
+ 0054  53				PUSH BX 
+ 0055  52				PUSH DX 
+ 0056  BA 000A R			MOV DX,OFFSET IBUF 
+ 0059  B4 0A			        MOV AH,10 
+ 005B  CD 21				INT 21H 
+ 005D  8A 0E 000B R			MOV CL,IBUF[1] 
+ 0061  32 ED				XOR CH,CH 
+Microsoft (R) Macro Assembler Version 5.00                  11/3/14 11:38:08
+                                                             Page     1-3
+
+
+ 0063  B2 00				MOV DL,0 
+ 0065  B3 01				MOV BL,1 
+ 0067  BE 000B R		        MOV SI,OFFSET IBUF[1] 
+ 006A  46				INC SI 
+ 006B  03 F1				ADD SI,CX 
+ 006D  8A 04			LOP5:   MOV AL,[SI] 
+ 006F  2C 30				SUB AL,30H 
+ 0071  F6 E3				MUL BL 
+ 0073  02 D0				ADD DL,AL 
+ 0075  B0 0A			        MOV AL,10 
+ 0077  F6 E3				MUL BL 
+ 0079  8A D8				MOV BL,AL 
+ 007B  4E				DEC SI 
+ 007C  E2 EF				LOOP LOP5 
+ 007E  8A C2				MOV AL,DL 
+ 0080  5A				POP DX 
+ 0081  5B				POP BX 
+ 0082  59				POP CX 
+ 0083  C3				RET 
+ 0084					STOB ENDP 
+EX51.ASM(77): error A2000: Block nesting error
+ 0084					FMAX PROC  
+ 0084  8B EC				MOV BP,SP 
+ 0086  8B 76 04				MOV SI,[BP+4] 
+ 0089  8B 4E 02				MOV CX,[BP+2] 
+ 008C  49				DEC CX 
+ 008D  8A 04				MOV AL,[SI] 
+ 008F  46			LOP2:   INC SI 
+ 0090  8A 24			        MOV AH,[SI] 
+ 0092  3A E0				CMP AH,AL 
+ 0094  76 02			        JBE NEXT 
+ 0096  86 E0				XCHG AH,AL 
+ 0098  E2 F5			NEXT:	LOOP LOP2 
+ 009A  A2 0000 U			MOV MA,AL 
+EX51.ASM(90): error A2009: Symbol not defined: MA
+ 009D  C3				RET 
+ 009E				        FMAX ENDP 
+ 009E					BTOAD PROC 
+ 009E  A0 0000 U			MOV AL,MA 
+EX51.ASM(94): error A2009: Symbol not defined: MA
+ 00A1  32 E4				XOR AH,AH 
+ 00A3  B3 64				MOV BL,100 
+ 00A5  B9 0003			        MOV CX,3 
+ 00A8  F6 F3			LOP3:	DIV BL 
+ 00AA  50				PUSH AX 
+ 00AB  8A D0				MOV DL,AL 
+ 00AD  80 C2 30				ADD DL,30H 
+ 00B0  B4 02			        MOV AH,2 
+ 00B2  CD 21				INT 21H 
+ 00B4  8A C3			        MOV AL,BL 
+ 00B6  32 E4				XOR AH,AH 
+ 00B8  B3 0A				MOV BL,10 
+ 00BA  F6 F3				DIV BL 
+ 00BC  8A D8				MOV BL,AL 
+Microsoft (R) Macro Assembler Version 5.00                  11/3/14 11:38:08
+                                                             Page     1-4
+
+
+ 00BE  58				POP AX 
+ 00BF  8A C4				MOV AL,AH 
+ 00C1  32 E4				XOR AH,AH 
+ 00C3  E2 E3				LOOP LOP3 
+ 00C5  C3				RET  
+ 00C6					BTOAD ENDP 
+ 00C6				CODE ENDS 
+					END START  
+
+Microsoft (R) Macro Assembler Version 5.00                  11/3/14 11:38:08
+                                                             Symbols-1
+
+
+Macros:
+
+		N a m e			Lines
+
+DSTRING  . . . . . . . . . . . .  	   7
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+CODE . . . . . . . . . . . . . .  	00C6	PARA	NONE	
+DATA . . . . . . . . . . . . . .  	0060	PARA	NONE	
+STACK  . . . . . . . . . . . . .  	0050	PARA	STACK	
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+BTOAD  . . . . . . . . . . . . .  	N PROC	009E	CODE	Length = 0028
+
+COUNT  . . . . . . . . . . . . .  	NUMBER	000A	
+
+DATA2  . . . . . . . . . . . . .  	L WORD	0000	STACK	Length = 0028
+DTOB . . . . . . . . . . . . . .  	N PROC	0053	CODE	Length = 0031
+
+FMAX . . . . . . . . . . . . . .  	N PROC	0084	CODE	Length = 001A
+
+IBUF . . . . . . . . . . . . . .  	L BYTE	000A	DATA
+INFOR1 . . . . . . . . . . . . .  	L BYTE	0018	DATA
+INFOR2 . . . . . . . . . . . . .  	L BYTE	0039	DATA
+INFOR3 . . . . . . . . . . . . .  	L BYTE	005D	DATA
+
+LOOP1  . . . . . . . . . . . . .  	L NEAR	0021	CODE
+LOP2 . . . . . . . . . . . . . .  	L NEAR	008F	CODE
+LOP3 . . . . . . . . . . . . . .  	L NEAR	00A8	CODE
+LOP5 . . . . . . . . . . . . . .  	L NEAR	006D	CODE
+
+NEXT . . . . . . . . . . . . . .  	L NEAR	0098	CODE
+NUM  . . . . . . . . . . . . . .  	L BYTE	0000	DATA	Length = 000A
+
+OBUF . . . . . . . . . . . . . .  	L BYTE	0012	DATA	Length = 0006
+
+START  . . . . . . . . . . . . .  	L NEAR	0000	CODE
+
+TOP  . . . . . . . . . . . . . .  	NUMBER	0028	
+
+@FILENAME  . . . . . . . . . . .  	TEXT  EX51		
+
+Microsoft (R) Macro Assembler Version 5.00                  11/3/14 11:38:08
+                                                             Symbols-2
+
+
+
+    116 Source  Lines
+    137 Total   Lines
+     24 Symbols
+
+  49614 + 399442 Bytes symbol space free
+
+      3 Warning Errors
+      6 Severe  Errors

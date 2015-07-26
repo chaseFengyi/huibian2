@@ -1,0 +1,124 @@
+FOURTH	PROC	NEAR
+	PUSHF
+	PUSH	AX
+	PUSH	BX
+	PUSH	CX
+	PUSH	DX
+	CURSOR	14,43
+	DSTRING	FINFOR1  
+
+	MOV aH, 0
+        MOV AL,00
+        INT 10H
+	;*****定义一个宏*****
+	SHOW      MACRO b
+          LEA DX,b
+          MOV AH,9
+          INT 21H
+          ENDM
+	;**********************音乐地址宏
+	ADDRESS MACRO A,B
+	LEA SI,A
+	LEA BP,DS:B
+	ENDM
+	;***********************
+	          DSTRING INFO1
+	          DSTRING INFO2
+	          DSTRING INFO3
+ 	          DSTRING MUSLIST
+	INPUT:    MOV AH,01H
+	          INT 21H
+	          CMP AL,'Q'
+	          JZ retu
+	          CMP AL,'A'
+	          JNZ B0
+	          ADDRESS MUS_FREG1,MUS_TIME1
+	          CALL MUSIC
+	          JMP EXIT1
+	B0:       CMP AL,'B'
+	          JNZ C0
+ 	         ADDRESS MUS_FREG2,MUS_TIME2
+ 	         CALL MUSIC
+ 	         JMP EXIT1
+	C0:       CMP AL,'C'
+	          JNZ exit
+  	        ADDRESS MUS_FREG3,MUS_TIME3
+	          CALL MUSIC
+	EXIT1:    show INFO5
+ 	         JMP INPUT
+	EXIT:
+ 	        call clear
+	        show INFO4
+		show INFO5
+     	     	show INFO1
+     	     	show INFO2
+     	     	show INFO3
+     	     	show MUSLIST
+          	jmp input
+	RETU:     MOV AH,4CH
+        	  INT 21H
+	;******************************************发声
+	GENSOUND PROC NEAR
+         	 PUSH AX
+          	PUSH BX
+          	PUSH CX
+          	PUSH DX
+          	PUSH DI
+          	MOV AL,0B6H
+          	OUT 43H,AL
+          	MOV DX,12H
+          	MOV AX,348ch
+          	DIV DI
+          	OUT 42H,AL
+          	MOV AL,AH
+          	OUT 42H,AL
+          	IN AL,61H
+          	MOV AH,AL
+          	OR AL,3
+          	OUT 61H,AL
+
+	WAIT1:    MOV CX,3314
+          	call waitf
+	DELAY1:   DEC BX
+      	    JNZ WAIT1
+      	    MOV AL,AH
+      	    OUT 61H,AL
+      	    POP DI
+      	    POP DX
+      	    POP CX
+    	    POP BX
+    	    POP AX
+         	 RET
+	GENSOUND ENDP
+	;********************************************
+	waitf proc near
+    	  push ax
+	waitf1:
+	      in al,61h
+	      and al,10h
+	      cmp al,ah
+	      je waitf1
+	      mov ah,al
+	      loop waitf1
+	      pop ax
+	      ret
+	waitf endp
+	
+	;*********************************************
+	MUSIC   PROC NEAR
+ 	         PUSH DS
+ 	         SUB AX,AX
+ 	         PUSH AX
+	FREG:     MOV DI,[SI]
+ 	         CMP DI,-1
+ 	         JE END_MUS
+	          MOV BX,DS:[BP]
+ 	         CALL GENSOUND
+ 	         ADD SI,2
+	         ADD BP,2
+	          JMP FREG
+	END_MUS:
+  	        RET
+	MUSIC    ENDP
+
+	FOURTH ENDP

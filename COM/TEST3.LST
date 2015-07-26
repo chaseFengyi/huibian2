@@ -1,0 +1,110 @@
+Microsoft (R) Macro Assembler Version 5.00                  11/16/14 17:47:25
+                                                             Page     1-1
+
+
+ 0000				DATAS SEGMENT  
+ 0000  00FF[			str1 db 255 dup(?)  
+	    ??			
+			 ]	
+				
+ 00FF				DATAS ENDS  
+				 
+ 0000				STACKS SEGMENT  
+ 0000  00C8[			db 200 dup(?)  
+	    ??			
+			 ]	
+				
+ 00C8				STACKS ENDS  
+				 
+ 0000				CODES SEGMENT  
+				ASSUME CS:CODES,DS:DATAS,SS:STACKS  
+ 0000				START:  
+ 0000  B8 ---- R		MOV AX,DATAS  
+ 0003  8E D8			MOV DS,AX  
+ 0005  BE 0000 R		MOV SI,OFFSET STR1  
+ 0008  B9 0100			MOV CX,100H ;循环次数  
+ 000B				AGAIN:  
+ 000B  B4 01			MOV AH,01H  
+ 000D  CD 21			INT 21H  
+ 000F  3C 24			CMP AL,24H ;回车的时候结束  
+ 0011  74 05			JZ OUT1  
+ 0013  88 04			MOV [SI],AL ;保持输入的字符串  
+ 0015  46			INC SI  
+ 0016  E2 F3			LOOP AGAIN  
+ 0018				OUT1:  
+ 0018  88 04			MOV [SI],AL ;把回车作为结束符号  
+ 001A  BE 0000 R		MOV SI,OFFSET STR1  
+ 001D  B9 0100			MOV CX,100H  
+ 0020				L1:  
+ 0020  8A 1C			MOV BL,[SI]  
+ 0022  80 FB 24			CMP BL,24H ;检查是否到结束了  
+ 0025  74 06			JZ OUT2 ;结束就退出  
+ 0027  E8 0046 R		CALL XCHGSTR  
+ 002A  46			INC SI  
+ 002B  E2 F3			LOOP L1  
+ 002D				OUT2:  
+ 002D  B9 0100			MOV CX,100H  
+ 0030  BE 0000 R		MOV SI,OFFSET STR1  
+ 0033  8A 04			L2: MOV AL,[SI]  
+ 0035  3C 24			CMP AL,24H  
+ 0037  74 09			JZ OUT3  
+ 0039  8A D0			MOV DL,AL  
+ 003B  B4 02			MOV AH,02H  
+ 003D  CD 21			INT 21H  
+ 003F  46			INC SI  
+ 0040  E2 F1			LOOP L2  
+ 0042				OUT3:  
+ 0042  B4 4C			MOV AH,4CH  
+ 0044  CD 21			INT 21H  
+Microsoft (R) Macro Assembler Version 5.00                  11/16/14 17:47:25
+                                                             Page     1-2
+
+
+ 0046				XCHGSTR:  
+ 0046  8A 04			MOV AL,[SI] ;取出数据  
+ 0048  0C 20			OR AL,20H ;让其第5位为1  
+ 004A  88 04			MOV [SI],AL ;将其保存  
+ 004C  C3			RET  
+ 004D				CODES ENDS  
+				END START 
+Microsoft (R) Macro Assembler Version 5.00                  11/16/14 17:47:25
+                                                             Symbols-1
+
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+CODES  . . . . . . . . . . . . .  	004D	PARA	NONE	
+DATAS  . . . . . . . . . . . . .  	00FF	PARA	NONE	
+STACKS . . . . . . . . . . . . .  	00C8	PARA	NONE	
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+AGAIN  . . . . . . . . . . . . .  	L NEAR	000B	CODES
+
+L1 . . . . . . . . . . . . . . .  	L NEAR	0020	CODES
+L2 . . . . . . . . . . . . . . .  	L NEAR	0033	CODES
+
+OUT1 . . . . . . . . . . . . . .  	L NEAR	0018	CODES
+OUT2 . . . . . . . . . . . . . .  	L NEAR	002D	CODES
+OUT3 . . . . . . . . . . . . . .  	L NEAR	0042	CODES
+
+START  . . . . . . . . . . . . .  	L NEAR	0000	CODES
+STR1 . . . . . . . . . . . . . .  	L BYTE	0000	DATAS	Length = 00FF
+
+XCHGSTR  . . . . . . . . . . . .  	L NEAR	0046	CODES
+
+@FILENAME  . . . . . . . . . . .  	TEXT  TEST3		
+
+
+     55 Source  Lines
+     55 Total   Lines
+     14 Symbols
+
+  49726 + 415714 Bytes symbol space free
+
+      0 Warning Errors
+      0 Severe  Errors

@@ -1,0 +1,207 @@
+Microsoft (R) Macro Assembler Version 5.00                  11/3/14 11:46:38
+                                                             Page     1-1
+
+
+ 0000				DATA SEGMENT 
+ 0000  000A[				NUM DB 10 DUP(?) 
+	    ??			
+			 ]	
+				
+ 000A  ??				N DB ? 
+ 000B  07 00				IBUF DB 7,0,6 DUP(?) 
+       0006[			
+	    ??			
+			 ]	
+				
+ 0013  0006[			        OBUF DB 6 DUP(?) 
+	    ??			
+			 ]	
+				
+ 0019  50 6C 65 61 73 65 20		INFOR1 DB "Please input the N:$" 
+       69 6E 70 75 74 20 74	
+       68 65 20 4E 3A 24	
+ 002D  0A 0D 50 6C 65 61 73	        INFOR2 DB 0AH,0DH,"Please input the num
+				ber:",0AH,0DH,'$' 
+       65 20 69 6E 70 75 74	
+       20 74 68 65 20 6E 75	
+       6D 62 65 72 3A 0A 0D	
+       24			
+ 004A  54 68 65 20 73 75 6D		INFOR3 DB "The sum is:$" 
+       20 69 73 3A 24		
+ 0056  0A 0D 24				INFOR4 DB 0AH,0DH,'$' 
+ 0059				DATA ENDS 
+ 0000				CODE SEGMENT 
+				        ASSUME CS:CODE,DS:DATA 
+ 0000  B8 ---- R		START:  MOV AX,DATA 
+ 0003  8E D8				MOV DS,AX 
+				DSTRING MACRO STRING 
+					PUSH DX 
+					PUSH AX 
+					MOV DX,OFFSET STRING 
+					MOV AH,09H 
+					INT 21H 
+					POP AX 
+					POP DX 
+					ENDM 
+				DSTRING INFOR1 
+ 0005  52                    1		PUSH DX 
+ 0006  50                    1		PUSH AX 
+ 0007  BA 0019 R             1		MOV DX,OFFSET INFOR1 
+ 000A  B4 09                 1		MOV AH,09H 
+ 000C  CD 21                 1		INT 21H 
+ 000E  58                    1		POP AX 
+ 000F  5A                    1		POP DX 
+ 0010  B4 01				MOV AH,01H 
+ 0012  CD 21				INT 21H	 
+ 0014  2C 30				SUB AL,30H 
+ 0016  A2 000A R			MOV N,AL 
+					DSTRING INFOR2 
+Microsoft (R) Macro Assembler Version 5.00                  11/3/14 11:46:38
+                                                             Page     1-2
+
+
+ 0019  52                    1		PUSH DX 
+ 001A  50                    1		PUSH AX 
+ 001B  BA 002D R             1		MOV DX,OFFSET INFOR2 
+ 001E  B4 09                 1		MOV AH,09H 
+ 0020  CD 21                 1		INT 21H 
+ 0022  58                    1		POP AX 
+ 0023  5A                    1		POP DX 
+ 0024  BB 0000 R			MOV BX,OFFSET NUM 
+ 0027  8A 0E 000A R			MOV CL,N 
+ 002B  B5 00				MOV CH,0 
+ 002D  51			LOOP1:  PUSH CX 
+ 002E  E8 005D R			CALL DTOB 
+					DSTRING INFOR4 
+ 0031  52                    1		PUSH DX 
+ 0032  50                    1		PUSH AX 
+ 0033  BA 0056 R             1		MOV DX,OFFSET INFOR4 
+ 0036  B4 09                 1		MOV AH,09H 
+ 0038  CD 21                 1		INT 21H 
+ 003A  58                    1		POP AX 
+ 003B  5A                    1		POP DX 
+ 003C  88 07				MOV [BX],AL 
+ 003E  43				INC BX 
+ 003F  59				POP CX 
+ 0040  E2 EB				LOOP LOOP1 
+ 0042  BE 0000 R			MOV SI,OFFSET NUM 
+ 0045  8A 0E 000A R			MOV CL,N 
+ 0049  E8 0081 R			CALL XADD 
+					DSTRING INFOR3 
+ 004C  52                    1		PUSH DX 
+ 004D  50                    1		PUSH AX 
+ 004E  BA 004A R             1		MOV DX,OFFSET INFOR3 
+ 0051  B4 09                 1		MOV AH,09H 
+ 0053  CD 21                 1		INT 21H 
+ 0055  58                    1		POP AX 
+ 0056  5A                    1		POP DX 
+ 0057  E8 008E R			CALL BTOAD 
+ 005A  EB 51 90				JMP T2 
+ 005D  BA 000B R		DTOB:   MOV DX,OFFSET IBUF 
+ 0060  B4 0A				MOV AH,0AH 
+ 0062  CD 21				INT 21H 
+ 0064  8A 0E 000C R			MOV CL,IBUF+1 
+ 0068  B5 00				MOV CH,0 
+ 006A  BE 000D R			MOV SI,OFFSET IBUF+2 
+ 006D  B8 0000				MOV AX,0 
+ 0070  BA 000A			AGAIN:  MOV DX,10 
+ 0073  F7 E2				MUL DX 
+ 0075  80 24 0F				AND BYTE PTR [SI],0FH 
+ 0078  02 04				ADD AL,[SI] 
+ 007A  80 D4 00				ADC AH,0 
+ 007D  46				INC SI 
+ 007E  E2 F0				LOOP AGAIN 
+ 0080  C3				RET 
+ 0081  B8 0000			XADD:   MOV AX,0 
+ 0084  8A 1C			T1:     MOV BL,[SI] 
+Microsoft (R) Macro Assembler Version 5.00                  11/3/14 11:46:38
+                                                             Page     1-3
+
+
+ 0086  B7 00				MOV BH,0 
+ 0088  03 C3				ADD AX,BX 
+ 008A  46				INC SI 
+ 008B  E2 F7				LOOP T1 
+ 008D  C3				RET 
+ 008E  BB 0018 R		BTOAD:  MOV BX,OFFSET OBUF+5 
+ 0091  C6 07 24				MOV BYTE PTR [BX],'$' 
+ 0094  B9 000A				MOV CX,10 
+ 0097  BA 0000			LOOP2:  MOV DX,0 
+ 009A  F7 F1				DIV CX 
+ 009C  80 C2 30				ADD DL,30H 
+ 009F  4B				DEC BX 
+ 00A0  88 17				MOV [BX],DL 
+ 00A2  0B C0				OR AX,AX 
+ 00A4  75 F1				JNZ LOOP2 
+ 00A6  8B D3				MOV DX,BX 
+ 00A8  B4 09				MOV AH,09H 
+ 00AA  CD 21				INT 21H 
+ 00AC  C3				RET 
+ 00AD  B4 4C			T2:	MOV AH,4CH 
+ 00AF  CD 21				INT 21H	 
+ 00B1				CODE ENDS 
+					END START  
+
+Microsoft (R) Macro Assembler Version 5.00                  11/3/14 11:46:38
+                                                             Symbols-1
+
+
+Macros:
+
+		N a m e			Lines
+
+DSTRING  . . . . . . . . . . . .  	   7
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+CODE . . . . . . . . . . . . . .  	00B1	PARA	NONE	
+DATA . . . . . . . . . . . . . .  	0059	PARA	NONE	
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+AGAIN  . . . . . . . . . . . . .  	L NEAR	0070	CODE
+
+BTOAD  . . . . . . . . . . . . .  	L NEAR	008E	CODE
+
+DTOB . . . . . . . . . . . . . .  	L NEAR	005D	CODE
+
+IBUF . . . . . . . . . . . . . .  	L BYTE	000B	DATA
+INFOR1 . . . . . . . . . . . . .  	L BYTE	0019	DATA
+INFOR2 . . . . . . . . . . . . .  	L BYTE	002D	DATA
+INFOR3 . . . . . . . . . . . . .  	L BYTE	004A	DATA
+INFOR4 . . . . . . . . . . . . .  	L BYTE	0056	DATA
+
+LOOP1  . . . . . . . . . . . . .  	L NEAR	002D	CODE
+LOOP2  . . . . . . . . . . . . .  	L NEAR	0097	CODE
+
+N  . . . . . . . . . . . . . . .  	L BYTE	000A	DATA
+NUM  . . . . . . . . . . . . . .  	L BYTE	0000	DATA	Length = 000A
+
+OBUF . . . . . . . . . . . . . .  	L BYTE	0013	DATA	Length = 0006
+
+START  . . . . . . . . . . . . .  	L NEAR	0000	CODE
+
+T1 . . . . . . . . . . . . . . .  	L NEAR	0084	CODE
+T2 . . . . . . . . . . . . . . .  	L NEAR	00AD	CODE
+
+XADD . . . . . . . . . . . . . .  	L NEAR	0081	CODE
+
+@FILENAME  . . . . . . . . . . .  	TEXT  EX52		
+
+Microsoft (R) Macro Assembler Version 5.00                  11/3/14 11:46:38
+                                                             Symbols-2
+
+
+
+     85 Source  Lines
+    113 Total   Lines
+     22 Symbols
+
+  49688 + 399368 Bytes symbol space free
+
+      0 Warning Errors
+      0 Severe  Errors

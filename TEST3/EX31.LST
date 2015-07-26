@@ -1,0 +1,123 @@
+Microsoft (R) Macro Assembler Version 5.00                  10/20/14 11:41:31
+                                                             Page     1-1
+
+
+ 0000				DATA    SEGMENT 
+ 0000  0A 0D 50 6C 65 61 73	        INFOR1  DB 0AH,0DH,"Please Press Any Ke
+				y to input a letter:$" 
+       65 20 50 72 65 73 73	
+       20 41 6E 79 20 4B 65	
+       79 20 74 6F 20 69 6E	
+       70 75 74 20 61 20 6C	
+       65 74 74 65 72 3A 24	
+ 002A  0A 0D 59 6F 75 20 49	        INFOR2  DB 0AH,0DH,"You Input a Lowerca
+				se Letter!$" 
+       6E 70 75 74 20 61 20	
+       4C 6F 77 65 72 63 61	
+       73 65 20 4C 65 74 74	
+       65 72 21 24		
+ 004A  0A 0D 59 6F 75 20 49	        INFOR3  DB 0AH,0DH,"You Input a Upperca
+				se Letter!$" 
+       6E 70 75 74 20 61 20	
+       55 70 70 65 72 63 61	
+       73 65 20 4C 65 74 74	
+       65 72 21 24		
+ 006A  0A 0D 59 6F 75 20 49	        INFOR4  DB 0AH,0DH,"You Input a Digit!$
+				" 
+       6E 70 75 74 20 61 20	
+       44 69 67 69 74 21 24	
+ 007F  0A 0D 59 6F 75 20 49	        INFOR5  DB 0AH,0DH,"You Input Other Let
+				ter!$" 
+       6E 70 75 74 20 4F 74	
+       68 65 72 20 4C 65 74	
+       74 65 72 21 24		
+ 0099				DATA    ENDS 
+ 0000				CODE    SEGMENT 
+				        ASSUME  CS:CODE,DS:DATA 
+ 0000  B8 ---- R		START:  MOV     AX,DATA 
+ 0003  8E D8			        MOV     DS,AX 
+ 0005  BA 0000 R		        MOV     DX,OFFSET INFOR1 
+ 0008  B4 09			        MOV     AH,09H 
+ 000A  CD 21			        INT     21H 
+ 000C  B4 01			        MOV     AH,01H 
+ 000E  CD 21			        INT     21H 
+ 0010  3C 30			        CMP     AL,'0' 
+ 0012  72 35			        JB      OTHER 
+ 0014  3C 39			        CMP     AL,'9' 
+ 0016  76 27			        JBE     DIGIT 
+ 0018  3C 41			        CMP     AL,'A' 
+ 001A  72 2D			        JB      OTHER 
+ 001C  3C 5A			        CMP     AL,'Z' 
+ 001E  76 15			        JBE     UPPER 
+ 0020  3C 61			        CMP     AL,'a' 
+ 0022  72 25			        JB      OTHER 
+ 0024  3C 7A			        CMP     AL,'z' 
+ 0026  76 03			        JBE     LOWER 
+ 0028  EB 26 90			        JMP     PEND 
+ 002B  BA 002A R		LOWER:  MOV     DX,OFFSET INFOR2 
+ 002E  B4 09			        MOV     AH,09H 
+Microsoft (R) Macro Assembler Version 5.00                  10/20/14 11:41:31
+                                                             Page     1-2
+
+
+ 0030  CD 21			        INT     21H 
+ 0032  EB 1C 90			        JMP     PEND 
+ 0035  BA 004A R		UPPER:  MOV     DX,OFFSET INFOR3 
+ 0038  B4 09			        MOV     AH,09H 
+ 003A  CD 21			        INT     21H 
+ 003C  EB 12 90			        JMP     PEND 
+ 003F  BA 006A R		DIGIT:  MOV     DX,OFFSET INFOR4 
+ 0042  B4 09			        MOV     AH,09H 
+ 0044  CD 21			        INT     21H 
+ 0046  EB 08 90			        JMP     PEND 
+ 0049  BA 007F R		OTHER:  MOV     DX,OFFSET INFOR5 
+ 004C  B4 09			        MOV     AH,09H 
+ 004E  CD 21			        INT     21H 
+ 0050  B4 4C			PEND:   MOV     AH,4CH 
+ 0052  CD 21			        INT     21H 
+ 0054				CODE    ENDS 
+				        END     START 
+Microsoft (R) Macro Assembler Version 5.00                  10/20/14 11:41:31
+                                                             Symbols-1
+
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+CODE . . . . . . . . . . . . . .  	0054	PARA	NONE	
+DATA . . . . . . . . . . . . . .  	0099	PARA	NONE	
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+DIGIT  . . . . . . . . . . . . .  	L NEAR	003F	CODE
+
+INFOR1 . . . . . . . . . . . . .  	L BYTE	0000	DATA
+INFOR2 . . . . . . . . . . . . .  	L BYTE	002A	DATA
+INFOR3 . . . . . . . . . . . . .  	L BYTE	004A	DATA
+INFOR4 . . . . . . . . . . . . .  	L BYTE	006A	DATA
+INFOR5 . . . . . . . . . . . . .  	L BYTE	007F	DATA
+
+LOWER  . . . . . . . . . . . . .  	L NEAR	002B	CODE
+
+OTHER  . . . . . . . . . . . . .  	L NEAR	0049	CODE
+
+PEND . . . . . . . . . . . . . .  	L NEAR	0050	CODE
+
+START  . . . . . . . . . . . . .  	L NEAR	0000	CODE
+
+UPPER  . . . . . . . . . . . . .  	L NEAR	0035	CODE
+
+@FILENAME  . . . . . . . . . . .  	TEXT  EX31		
+
+
+     48 Source  Lines
+     48 Total   Lines
+     15 Symbols
+
+  50282 + 416294 Bytes symbol space free
+
+      0 Warning Errors
+      0 Severe  Errors

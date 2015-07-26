@@ -1,0 +1,106 @@
+Microsoft (R) Macro Assembler Version 5.00                  10/24/14 08:34:13
+                                                             Page     1-1
+
+
+ 0000				DATA    SEGMENT 
+ 0000  0A 0D 41 72 65 20 79	        INFOR1  DB 0AH,0DH,"Are you really want
+				 to exit?$" 
+       6F 75 20 72 65 61 6C	
+       6C 79 20 77 61 6E 74	
+       20 74 6F 20 65 78 69	
+       74 3F 24			
+ 001F  0A 0D 54 68 61 6E 6B	        INFOR2  DB 0AH,0DH,"Thank you for using
+				!$" 
+       20 79 6F 75 20 66 6F	
+       72 20 75 73 69 6E 67	
+       21 24			
+ 0036  0A 0D 4C 65 74 27 73	        INFOR3  DB 0AH,0DH,"Let's continue!$" 
+       20 63 6F 6E 74 69 6E	
+       75 65 21 24		
+ 0048  0A 0D 59 6F 75 20 70	        INFOR4  DB 0AH,0DH,"You press an error 
+				key!$" 
+       72 65 73 73 20 61 6E	
+       20 65 72 72 6F 72 20	
+       6B 65 79 21 24		
+ 0062				DATA    ENDS 
+ 0000				CODE    SEGMENT 
+				        ASSUME CS:CODE,DS:DATA 
+ 0000  B8 ---- R		START:  MOV     AX,DATA 
+ 0003  8E D8			        MOV     DS,AX 
+ 0005  BA 0000 R		        MOV     DX,OFFSET INFOR1 
+ 0008  B4 09			        MOV     AH,09H 
+ 000A  CD 21			        INT     21H 
+ 000C  B4 01			        MOV     AH,01H 
+ 000E  CD 21			        INT     21H 
+ 0010  3C 59			        CMP     AL,'Y' 
+ 0012  74 14			        JE      EQUAL 
+ 0014  75 26			        JNE     OTHER 
+ 0016  3C 79			        CMP     AL,'y' 
+ 0018  74 0E			        JE      EQUAL 
+ 001A  75 20			        JNE     OTHER 
+ 001C  3C 6E			        CMP     AL,'n' 
+ 001E  74 12			        JE      NEQUAL 
+ 0020  75 1A			        JNE     OTHER 
+ 0022  3C 4E			        CMP     AL,'N' 
+ 0024  74 0C			        JE      NEQUAL 
+ 0026  75 14			        JNE     OTHER 
+ 0028  BA 001F R		EQUAL:  MOV     DX,OFFSET INFOR2 
+ 002B  B4 09			        MOV     AH,09H 
+ 002D  CD 21			        INT     21H 
+ 002F  EB 12 90			        JMP     PEND 
+ 0032  BA 0036 R		NEQUAL: MOV     DX,OFFSET INFOR3 
+ 0035  B4 09			        MOV     AH,09H 
+ 0037  CD 21			        INT     21H 
+ 0039  EB 08 90			        JMP     PEND 
+ 003C  BA 0048 R		OTHER:  MOV     DX,OFFSET INFOR4 
+ 003F  B4 09			        MOV     AH,09H 
+ 0041  CD 21			        INT     21H 
+ 0043  B4 4C			PEND:   MOV     AH,4CH 
+Microsoft (R) Macro Assembler Version 5.00                  10/24/14 08:34:13
+                                                             Page     1-2
+
+
+ 0045  CD 21			        INT     21H 
+ 0047				CODE    ENDS 
+				        END START 
+Microsoft (R) Macro Assembler Version 5.00                  10/24/14 08:34:13
+                                                             Symbols-1
+
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+CODE . . . . . . . . . . . . . .  	0047	PARA	NONE	
+DATA . . . . . . . . . . . . . .  	0062	PARA	NONE	
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+EQUAL  . . . . . . . . . . . . .  	L NEAR	0028	CODE
+
+INFOR1 . . . . . . . . . . . . .  	L BYTE	0000	DATA
+INFOR2 . . . . . . . . . . . . .  	L BYTE	001F	DATA
+INFOR3 . . . . . . . . . . . . .  	L BYTE	0036	DATA
+INFOR4 . . . . . . . . . . . . .  	L BYTE	0048	DATA
+
+NEQUAL . . . . . . . . . . . . .  	L NEAR	0032	CODE
+
+OTHER  . . . . . . . . . . . . .  	L NEAR	003C	CODE
+
+PEND . . . . . . . . . . . . . .  	L NEAR	0043	CODE
+
+START  . . . . . . . . . . . . .  	L NEAR	0000	CODE
+
+@FILENAME  . . . . . . . . . . .  	TEXT  EX32		
+
+
+     42 Source  Lines
+     42 Total   Lines
+     13 Symbols
+
+  50282 + 416294 Bytes symbol space free
+
+      0 Warning Errors
+      0 Severe  Errors

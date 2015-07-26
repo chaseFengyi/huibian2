@@ -1,0 +1,68 @@
+Microsoft (R) Macro Assembler Version 5.00                  10/19/14 23:31:14
+                                                             Page     1-1
+
+
+       1 0000				DATA SEGMENT 
+       2 0000  82 68 88			        NUM     DB 82H,68H,88H 
+       3 0003  ??			        SUM     DB ? 
+       4 0004				DATA ENDS 
+       5				 
+       6				 
+       7				 
+       8 0000				CODE SEGMENT 
+       9				        ASSUME  CS:CODE,DS:DATA 
+      10 0000  B8 ---- R		START:  MOV     AX,DATA 
+      11 0003  8E D8			        MOV     DS,AX 
+      12				 
+      13 0005  C7 07 0020		       MOV      [BX],20H 
+EX13.ASM(13): error A2035: Operand must have size
+      14 0009  FE 04			       INC [SI] 
+EX13.ASM(14): error A2035: Operand must have size
+      15 000B  03 04			       ADD AX,[SI+DI] 
+EX13.ASM(15): error A2047: Multiple index registers
+      16 000D  E0			       SHL AX,3 
+EX13.ASM(16): error A2052: Improper operand type
+      17 000E  68 2000			       PUSH 2000H 
+EX13.ASM(17): error A2056: Immediate mode illegal
+      18				       POP AL 
+EX13.ASM(18): warning A4057: Illegal size for operand
+      19 0011  8E C8			       MOV CS,AX 
+EX13.ASM(19): error A2059: Illegal use of CS register
+      20 0013  BB 1000			       MOV DS,1000H 
+EX13.ASM(20): error A2056: Immediate mode illegal
+      21				 
+      22 0016  B4 4C			        MOV     AH,4CH 
+      23 0018  CD 21			        INT     21H 
+      24 001A				CODE    ENDS 
+      25				        END START 
+Microsoft (R) Macro Assembler Version 5.00                  10/19/14 23:31:14
+                                                             Symbols-1
+
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+CODE . . . . . . . . . . . . . .  	001A	PARA	NONE	
+DATA . . . . . . . . . . . . . .  	0004	PARA	NONE	
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+NUM  . . . . . . . . . . . . . .  	L BYTE	0000	DATA
+
+START  . . . . . . . . . . . . .  	L NEAR	0000	CODE
+SUM  . . . . . . . . . . . . . .  	L BYTE	0003	DATA
+
+@FILENAME  . . . . . . . . . . .  	TEXT  EX13		
+
+
+     25 Source  Lines
+     25 Total   Lines
+      7 Symbols
+
+  49114 + 399910 Bytes symbol space free
+
+      1 Warning Errors
+      7 Severe  Errors

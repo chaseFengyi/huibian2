@@ -1,0 +1,408 @@
+Microsoft (R) Macro Assembler Version 5.00                  11/16/14 17:54:38
+                                                             Page     1-1
+
+
+ 0000				DATA      SEGMENT 
+ 0000  0D 0A 57 45 4C 43 4F	INFO1     DB 0DH,0AH,'WELCOME YOU TO COME HERE!
+				$' 
+       4D 45 20 59 4F 55 20	
+       54 4F 20 43 4F 4D 45	
+       20 48 45 52 45 21 24	
+ 001C  0D 0A 74 68 69 73 20	INFO2     DB 0DH,0AH,'this is a music program!$
+				' 
+       69 73 20 61 20 6D 75	
+       73 69 63 20 70 72 6F	
+       67 72 61 6D 21 24	
+ 0037  0D 0A 70 6C 65 61 73	INFO3     DB 0DH,0AH,'please select!$' 
+       65 20 73 65 6C 65 63	
+       74 21 24			
+ 0048  0D 0A 49 4E 50 55 54	INFO4     DB 0DH,0AH,'INPUT ERROR!$' 
+       20 45 52 52 4F 52 21	
+       24			
+ 0057  0D 0A 50 4C 45 41 53	INFO5     DB 0DH,0AH,'PLEASE INPUT AGAIN!$' 
+       45 20 49 4E 50 55 54	
+       20 41 47 41 49 4E 21	
+       24			
+ 006D  0D 0A 41 20 4D 55 53	MUSLIST   DB 0DH,0AH,'A MUSIC1' 
+       49 43 31			
+ 0077  0D 0A 42 20 4D 55 53	          DB 0DH,0AH,'B MUSIC2' 
+       49 43 32			
+ 0081  0D 0A 43 20 4D 55 53	          DB 0DH,0AH,'C MUSIC3' 
+       49 43 33			
+ 008B  0D 0A 51 20 45 58 49	          DB 0DH,0AH,'Q EXIT' 
+       54			
+ 0093  0D 0A 24			          db 0dh,0ah,'$' 
+				;音乐一****************************************
+				***************** 
+ 0096  014A 0126 0106 0126	MUS_FREG1 DW 330,294,262,294,3 DUP (330) 
+       0003[			
+	   014A			
+			 ]	
+				
+ 00A4  0003[			          DW 3 DUP (294),330,392,392 
+	   0126			
+			 ]	
+       014A 0188 0188		
+ 00B0  014A 0126 0106 0126	          DW 330,294,262,294,4 DUP (330) 
+       0004[			
+	   014A			
+			 ]	
+				
+ 00C0  0126 0126 014A 0126	          DW 294,294,330,294,262,-1 
+       0106 FFFF		
+ 00CC  0006[			MUS_TIME1 DW 6 DUP (25),50 
+	   0019			
+			 ]	
+       0032			
+ 00DA  0002[			          DW 2 DUP (25,25,50) 
+	   0019			
+Microsoft (R) Macro Assembler Version 5.00                  11/16/14 17:54:38
+                                                             Page     1-2
+
+
+	   0019			
+	   0032			
+			 ]	
+				
+ 00E6  000C[			          DW 12 DUP (25),100 
+	   0019			
+			 ]	
+       0064			
+				;**********************************************
+				***********音乐二 
+ 0100  014A 0188 014A 0126	MUS_FREG2 DW 330,392,330,294,330,392,330,294,33
+				0 
+       014A 0188 014A 0126	
+       014A			
+ 0112  014A 0188 014A 0126	          DW 330,392,330,294,262,294,330,392,29
+				4 
+       0106 0126 014A 0188	
+       0126			
+ 0124  0106 0106 00DC 00C4	          DW 262,262,220,196,196,220,262,294,33
+				2,262,-1 
+       00C4 00DC 0106 0126	
+       014C 0106 FFFF		
+ 013A  0003[			MUS_TIME2 DW 3 DUP(50),25,25,50,25,25,100 
+	   0032			
+			 ]	
+       0019 0019 0032 0019	
+       0019 0064		
+ 014C  0002[			          DW 2 DUP(50,50,25,25),100 
+	   0032			
+	   0032			
+	   0019			
+	   0019			
+			 ]	
+       0064			
+ 015E  0003[			          DW 3 DUP(50,25,25),100 
+	   0032			
+	   0019			
+	   0019			
+			 ]	
+       0064			
+				;**********************************************
+				**********音乐三 
+ 0172  0106 0106 0126 0106	MUS_FREG3 DW 262,262,294,262,349 
+       015D			
+ 017C  014A 0106 0106 0126	          DW 330,262,262,294,262 
+       0106			
+ 0186  0188 015D 0106 0106	          DW 392,349,262,262,523 
+       020B			
+ 0190  01B8 015D 0106 0106	          DW 440,349,262,262,466 
+       01D2			
+ 019A  01D2 01B8 0106 0188	          DW 466,440,262,392,349,-1 
+       015D FFFF		
+				 
+ 01A6  0032 0032 0064 0064	MUS_TIME3 DW 50,50,100,100,100 
+Microsoft (R) Macro Assembler Version 5.00                  11/16/14 17:54:38
+                                                             Page     1-3
+
+
+       0064			
+ 01B0  0064 0064 0032 0032	          DW 100,100,50,50,100,100 
+       0064 0064		
+ 01BC  0064 0064 0064 0032	          DW 100,100,100,50,50,100 
+       0032 0064		
+ 01C8  0064 0064 0064 0064	          DW 100,100,100,100,100,50 
+       0064 0032		
+ 01D4  0032 0064 0064 0064	          DW 50,100,100,100,100,100 
+       0064 0064		
+ 01E0				DATA      ENDS 
+ 0000				STACK     SEGMENT 
+ 0000  00C8[			          DB 200 DUP ('STACK') 
+	   53 54 41 43 4B	
+			 ]	
+				
+ 03E8				STACK     ENDS 
+				 
+ 0000				CODE      SEGMENT 
+				          ASSUME DS:DATA,SS:STACK,CS:CODE 
+ 0000				START: 
+ 0000  B8 ---- R		          MOV AX,DATA 
+ 0003  8E D8			          MOV DS,AX 
+ 0005  B4 00			          MOV aH, 0 
+ 0007  B0 00			          MOV AL,00 
+ 0009  CD 10			          INT 10H 
+				;*****定义一个宏***** 
+				SHOW      MACRO b 
+				          LEA DX,b 
+				          MOV AH,9 
+				          INT 21H 
+				          ENDM 
+				;**********************音乐地址宏 
+				ADDRESS MACRO A,B 
+				LEA SI,A 
+				LEA BP,DS:B 
+				ENDM 
+				;*********************** 
+				          show INFO1 
+ 000B  8D 16 0000 R          1	          LEA DX,INFO1 
+ 000F  B4 09                 1	          MOV AH,9 
+ 0011  CD 21                 1	          INT 21H 
+				          show INFO2 
+ 0013  8D 16 001C R          1	          LEA DX,INFO2 
+ 0017  B4 09                 1	          MOV AH,9 
+ 0019  CD 21                 1	          INT 21H 
+				          show INFO3 
+ 001B  8D 16 0037 R          1	          LEA DX,INFO3 
+ 001F  B4 09                 1	          MOV AH,9 
+ 0021  CD 21                 1	          INT 21H 
+				          show MUSLIST 
+ 0023  8D 16 006D R          1	          LEA DX,MUSLIST 
+ 0027  B4 09                 1	          MOV AH,9 
+ 0029  CD 21                 1	          INT 21H 
+ 002B  B4 01			INPUT:    MOV AH,01H 
+Microsoft (R) Macro Assembler Version 5.00                  11/16/14 17:54:38
+                                                             Page     1-4
+
+
+ 002D  CD 21			          INT 21H 
+ 002F  3C 51			          CMP AL,'Q' 
+ 0031  74 72			          JZ retu 
+ 0033  3C 41			          CMP AL,'A' 
+ 0035  75 0E			          JNZ B0 
+				          ADDRESS MUS_FREG1,MUS_TIME1 
+ 0037  8D 36 0096 R          1	LEA SI,MUS_FREG1 
+ 003B  8D 2E 00CC R          1	LEA BP,DS:MUS_TIME1 
+ 003F  E8 00EA R		          CALL MUSIC 
+ 0042  EB 22 90			          JMP EXIT1 
+ 0045  3C 42			B0:       CMP AL,'B' 
+ 0047  75 0E			          JNZ C0 
+				          ADDRESS MUS_FREG2,MUS_TIME2 
+ 0049  8D 36 0100 R          1	LEA SI,MUS_FREG2 
+ 004D  8D 2E 013A R          1	LEA BP,DS:MUS_TIME2 
+ 0051  E8 00EA R		          CALL MUSIC 
+ 0054  EB 10 90			          JMP EXIT1 
+ 0057  3C 43			C0:       CMP AL,'C' 
+ 0059  75 15			          JNZ exit 
+				          ADDRESS MUS_FREG3,MUS_TIME3 
+ 005B  8D 36 0172 R          1	LEA SI,MUS_FREG3 
+ 005F  8D 2E 01A6 R          1	LEA BP,DS:MUS_TIME3 
+ 0063  E8 00EA R		          CALL MUSIC 
+ 0066				EXIT1:    show INFO5 
+ 0066  8D 16 0057 R          1	          LEA DX,INFO5 
+ 006A  B4 09                 1	          MOV AH,9 
+ 006C  CD 21                 1	          INT 21H 
+ 006E  EB BB			          JMP INPUT 
+ 0070				EXIT: 
+ 0070  E8 0105 R		          call clear 
+				          show INFO4 
+ 0073  8D 16 0048 R          1	          LEA DX,INFO4 
+ 0077  B4 09                 1	          MOV AH,9 
+ 0079  CD 21                 1	          INT 21H 
+				          show INFO5 
+ 007B  8D 16 0057 R          1	          LEA DX,INFO5 
+ 007F  B4 09                 1	          MOV AH,9 
+ 0081  CD 21                 1	          INT 21H 
+				          show INFO1 
+ 0083  8D 16 0000 R          1	          LEA DX,INFO1 
+ 0087  B4 09                 1	          MOV AH,9 
+ 0089  CD 21                 1	          INT 21H 
+				          show INFO2 
+ 008B  8D 16 001C R          1	          LEA DX,INFO2 
+ 008F  B4 09                 1	          MOV AH,9 
+ 0091  CD 21                 1	          INT 21H 
+				          show INFO3 
+ 0093  8D 16 0037 R          1	          LEA DX,INFO3 
+ 0097  B4 09                 1	          MOV AH,9 
+ 0099  CD 21                 1	          INT 21H 
+				          show MUSLIST 
+ 009B  8D 16 006D R          1	          LEA DX,MUSLIST 
+ 009F  B4 09                 1	          MOV AH,9 
+ 00A1  CD 21                 1	          INT 21H 
+Microsoft (R) Macro Assembler Version 5.00                  11/16/14 17:54:38
+                                                             Page     1-5
+
+
+ 00A3  EB 86			          jmp input 
+ 00A5  B4 4C			RETU:     MOV AH,4CH 
+ 00A7  CD 21			          INT 21H 
+				;******************************************发声
+				 
+ 00A9				GENSOUND PROC NEAR 
+ 00A9  50			          PUSH AX 
+ 00AA  53			          PUSH BX 
+ 00AB  51			          PUSH CX 
+ 00AC  52			          PUSH DX 
+ 00AD  57			          PUSH DI 
+ 00AE  B0 B6			          MOV AL,0B6H 
+ 00B0  E6 43			          OUT 43H,AL 
+ 00B2  BA 0012			          MOV DX,12H 
+ 00B5  B8 348C			          MOV AX,348ch 
+ 00B8  F7 F7			          DIV DI 
+ 00BA  E6 42			          OUT 42H,AL 
+ 00BC  8A C4			          MOV AL,AH 
+ 00BE  E6 42			          OUT 42H,AL 
+ 00C0  E4 61			          IN AL,61H 
+ 00C2  8A E0			          MOV AH,AL 
+ 00C4  0C 03			          OR AL,3 
+ 00C6  E6 61			          OUT 61H,AL 
+				 
+ 00C8  B9 0CF2			WAIT1:    MOV CX,3314 
+ 00CB  E8 00DB R		          call waitf 
+ 00CE  4B			DELAY1:   DEC BX 
+ 00CF  75 F7			          JNZ WAIT1 
+ 00D1  8A C4			          MOV AL,AH 
+ 00D3  E6 61			          OUT 61H,AL 
+ 00D5  5F			          POP DI 
+ 00D6  5A			          POP DX 
+ 00D7  59			          POP CX 
+ 00D8  5B			          POP BX 
+ 00D9  58			          POP AX 
+ 00DA  C3			          RET 
+ 00DB				GENSOUND ENDP 
+				;******************************************** 
+ 00DB				waitf proc near 
+ 00DB  50			      push ax 
+ 00DC				waitf1: 
+ 00DC  E4 61			      in al,61h 
+ 00DE  24 10			      and al,10h 
+ 00E0  3A C4			      cmp al,ah 
+ 00E2  74 F8			      je waitf1 
+ 00E4  8A E0			      mov ah,al 
+ 00E6  E2 F4			      loop waitf1 
+ 00E8  58			      pop ax 
+ 00E9  C3			      ret 
+ 00EA				waitf endp 
+				 
+				;********************************************* 
+ 00EA				MUSIC   PROC NEAR 
+ 00EA  1E			          PUSH DS 
+Microsoft (R) Macro Assembler Version 5.00                  11/16/14 17:54:38
+                                                             Page     1-6
+
+
+ 00EB  2B C0			          SUB AX,AX 
+ 00ED  50			          PUSH AX 
+ 00EE  8B 3C			FREG:     MOV DI,[SI] 
+ 00F0  83 FF FF			          CMP DI,-1 
+ 00F3  74 0F			          JE END_MUS 
+ 00F5  3E: 8B 5E 00		          MOV BX,DS:[BP] 
+ 00F9  E8 00A9 R		          CALL GENSOUND 
+ 00FC  83 C6 02			          ADD SI,2 
+ 00FF  83 C5 02			          ADD BP,2 
+ 0102  EB EA			          JMP FREG 
+ 0104				END_MUS: 
+ 0104  C3			          RET 
+ 0105				MUSIC    ENDP 
+				;**********************************************
+				**clear!!! 
+ 0105				clear proc near 
+ 0105  50			      push ax 
+ 0106  53			      push bx 
+ 0107  51			      push cx 
+ 0108  52			      push dx 
+ 0109  B4 06			      mov  ah,6 
+ 010B  B0 00			      mov al,0 
+ 010D  B5 00			      mov ch,0 
+ 010F  B1 00			      mov cl,0 
+ 0111  B6 18			      mov dh,24 
+ 0113  B2 4F			      mov dl,79 
+ 0115  B7 07			      mov bh,7 
+ 0117  CD 10			      int 10h 
+ 0119  5A			      pop dx 
+ 011A  59			      pop cx 
+ 011B  5B			      pop bx 
+ 011C  58			      pop ax 
+ 011D  C3			      ret 
+ 011E				clear endp 
+ 011E				CODE      ENDS 
+				          END START 
+
+Microsoft (R) Macro Assembler Version 5.00                  11/16/14 17:54:38
+                                                             Symbols-1
+
+
+Macros:
+
+		N a m e			Lines
+
+ADDRESS  . . . . . . . . . . . .  	   2
+SHOW . . . . . . . . . . . . . .  	   3
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+CODE . . . . . . . . . . . . . .  	011E	PARA	NONE	
+DATA . . . . . . . . . . . . . .  	01E0	PARA	NONE	
+STACK  . . . . . . . . . . . . .  	03E8	PARA	NONE	
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+B0 . . . . . . . . . . . . . . .  	L NEAR	0045	CODE
+
+C0 . . . . . . . . . . . . . . .  	L NEAR	0057	CODE
+CLEAR  . . . . . . . . . . . . .  	N PROC	0105	CODE	Length = 0019
+
+DELAY1 . . . . . . . . . . . . .  	L NEAR	00CE	CODE
+
+END_MUS  . . . . . . . . . . . .  	L NEAR	0104	CODE
+EXIT . . . . . . . . . . . . . .  	L NEAR	0070	CODE
+EXIT1  . . . . . . . . . . . . .  	L NEAR	0066	CODE
+
+FREG . . . . . . . . . . . . . .  	L NEAR	00EE	CODE
+
+GENSOUND . . . . . . . . . . . .  	N PROC	00A9	CODE	Length = 0032
+
+INFO1  . . . . . . . . . . . . .  	L BYTE	0000	DATA
+INFO2  . . . . . . . . . . . . .  	L BYTE	001C	DATA
+INFO3  . . . . . . . . . . . . .  	L BYTE	0037	DATA
+INFO4  . . . . . . . . . . . . .  	L BYTE	0048	DATA
+INFO5  . . . . . . . . . . . . .  	L BYTE	0057	DATA
+INPUT  . . . . . . . . . . . . .  	L NEAR	002B	CODE
+
+MUSIC  . . . . . . . . . . . . .  	N PROC	00EA	CODE	Length = 001B
+MUSLIST  . . . . . . . . . . . .  	L BYTE	006D	DATA
+MUS_FREG1  . . . . . . . . . . .  	L WORD	0096	DATA
+MUS_FREG2  . . . . . . . . . . .  	L WORD	0100	DATA
+MUS_FREG3  . . . . . . . . . . .  	L WORD	0172	DATA
+MUS_TIME1  . . . . . . . . . . .  	L WORD	00CC	DATA	Length = 0006
+MUS_TIME2  . . . . . . . . . . .  	L WORD	013A	DATA	Length = 0003
+MUS_TIME3  . . . . . . . . . . .  	L WORD	01A6	DATA
+
+RETU . . . . . . . . . . . . . .  	L NEAR	00A5	CODE
+
+START  . . . . . . . . . . . . .  	L NEAR	0000	CODE
+
+Microsoft (R) Macro Assembler Version 5.00                  11/16/14 17:54:38
+                                                             Symbols-2
+
+
+WAIT1  . . . . . . . . . . . . .  	L NEAR	00C8	CODE
+WAITF  . . . . . . . . . . . . .  	N PROC	00DB	CODE	Length = 000F
+WAITF1 . . . . . . . . . . . . .  	L NEAR	00DC	CODE
+
+@FILENAME  . . . . . . . . . . .  	TEXT  TEST2		
+
+
+    183 Source  Lines
+    222 Total   Lines
+     35 Symbols
+
+  49648 + 399408 Bytes symbol space free
+
+      0 Warning Errors
+      0 Severe  Errors

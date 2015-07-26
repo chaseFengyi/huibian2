@@ -1,0 +1,1226 @@
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 21:18:33
+                                                             Page     1-1
+
+
+ 0000				DATA    SEGMENT 
+ 0000  0064[			        HENGX   DB 100 DUP('*')	 
+	   2A			
+			 ]	
+				
+ 0064  50 6C 65 61 73 65 20		TIS1	DB "Please input the Tab to cha
+				nge$"	 
+       69 6E 70 75 74 20 74	
+       68 65 20 54 61 62 20	
+       74 6F 20 63 68 61 6E	
+       67 65 24			
+ 0083  57 65 6C 63 6F 6D 65		TIS2	DB "Welcome!That is meau$" 
+       21 54 68 61 74 20 69	
+       73 20 6D 65 61 75 24	
+ 0098  50 72 65 73 73 20 74		TIS3	DB "Press the Tab to move next$
+				" 
+       68 65 20 54 61 62 20	
+       74 6F 20 6D 6F 76 65	
+       20 6E 65 78 74 24	
+ 00B3  50 72 65 73 73 20 74		TIS4	DB "Press the Esc to exit$" 
+       68 65 20 45 73 63 20	
+       74 6F 20 65 78 69 74	
+       24			
+ 00C9  54 68 65 20 66 69 72		TIS5	DB "The first is display time o
+				f now$" 
+       73 74 20 69 73 20 64	
+       69 73 70 6C 61 79 20	
+       74 69 6D 65 20 6F 66	
+       20 6E 6F 77 24		
+ 00EA  54 68 65 20 73 65 63		TIS6	DB "The second is 1+2+...+n=sum
+				$" 
+       6F 6E 64 20 69 73 20	
+       31 2B 32 2B 2E 2E 2E	
+       2B 6E 3D 73 75 6D 24	
+ 0106  54 68 65 20 74 68 69		TIS7	DB "The third is display string
+				$" 
+       72 64 20 69 73 20 64	
+       69 73 70 6C 61 79 20	
+       73 74 72 69 6E 67 24	
+ 0122  46 49 52 53 54 24		TIS8	DB "FIRST$" 
+ 0128  44 69 73 70 6C 61 79		TIS9	DB "Display the time$" 
+       20 74 68 65 20 74 69	
+       6D 65 24			
+				 
+				;第一个子程序数据段****************************
+				***	 
+ 0139  54 6F 64 61 79 20 69		BUF1	DB "Today is:$" 
+       73 3A 24			
+ 0143  43 75 72 72 65 6E 74		BUF2	DB "Current time is:$" 
+       20 74 69 6D 65 20 69	
+       73 3A 24			
+ 0154  20 20 20 20 20 79 65		YEAR    DB 20H,20H,20H,20H,' year ','$'
+				 
+       61 72 20 24		
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 21:18:33
+                                                             Page     1-2
+
+
+ 015F  20 20 20 6D 6F 6E 74		MONTH   DB 20H,20H,' month ','$' 
+       68 20 24			
+ 0169  20 20 20 64 61 79 20		DAY	DB 20H,20H,' day ','$' 
+       24			
+ 0171  20 20 3A 24			HOUR  	DB 20H,20H,':','$' 
+ 0175  20 20 3A 24			MINUTE	DB 20H,20H,':','$' 
+ 0179  20 20 3A 24			SECOND	DB 20H,20H,':','$' 
+ 017D  20 20 24				MSECOND DB 20H,20H,'$' 
+ 0180  20 20 20 77 65 65 6B		MSE	DB 20H,20H,' week ','$' 
+       20 24			
+ 0189  20 50 72 65 73 73 20		INFOR   DB " Press any key to exit...$"
+				 
+       61 6E 79 20 6B 65 79	
+       20 74 6F 20 65 78 69	
+       74 2E 2E 2E 24		
+				;第二个子程序数据段****************************
+				****** 
+ 01A3  50 6C 65 61 73 65 20		SINF1   DB "Please input a number:$" 
+       69 6E 70 75 74 20 61	
+       20 6E 75 6D 62 65 72	
+       3A 24			
+ 01BA  54 68 65 20 72 65 73	        SINF2   DB "The result is:$" 
+       75 6C 74 20 69 73 3A	
+       24			
+ 01C9  07 00			        SIBUF   DB 7,0,6 DUP(?) 
+       0006[			
+	    ??			
+			 ]	
+				
+ 01D1  0006[			        SOBUF   DB 6 DUP(?) 
+	    ??			
+			 ]	
+				
+ 01D7  33 36 31			        SNUM    DB 33H,36H,31H 
+				;第三个子程序数据段****************************
+				****** 
+ 01DA  49 4E 50 55 54 28 3E		INPUT	DB "INPUT(>1):$" 
+       31 29 3A 24		
+ 01E5  21 00				STRING1	DB 33,0,32 DUP(?) 
+       0020[			
+	    ??			
+			 ]	
+				
+ 0207  0020[				STRING2	DB 32 DUP(?) 
+	    ??			
+			 ]	
+				
+ 0227  0020[				STRING3	DB 32 DUP(?) 
+	    ??			
+			 ]	
+				
+				;第四个子程序数据段****************************
+				****** 
+ 0247  50 6C 65 61 73 65 20		FINFOR1 DB "Please Press Any Key to inp
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 21:18:33
+                                                             Page     1-3
+
+
+				ut a letter:$"       
+       50 72 65 73 73 20 41	
+       6E 79 20 4B 65 79 20	
+       74 6F 20 69 6E 70 75	
+       74 20 61 20 6C 65 74	
+       74 65 72 3A 24		
+ 026F  59 6F 75 20 69 6E 70	     	FINFOR2 DB "You input a lowercase lette
+				r! $"       
+       75 74 20 61 20 6C 6F	
+       77 65 72 63 61 73 65	
+       20 6C 65 74 74 65 72	
+       21 20 24			
+ 028E  59 6F 75 20 69 6E 70	     	FINFOR3 DB "You input a Uppercase lette
+				r! $"       
+       75 74 20 61 20 55 70	
+       70 65 72 63 61 73 65	
+       20 6C 65 74 74 65 72	
+       21 20 24			
+ 02AD  59 6F 75 20 69 6E 70	     	FINFOR4 DB "You input a Digit! $"      
+				 
+       75 74 20 61 20 44 69	
+       67 69 74 21 20 24	
+ 02C1  59 6F 75 20 69 6E 70	     	FINFOR5 DB "You input Other letter! $" 
+				 
+       75 74 20 4F 74 68 65	
+       72 20 6C 65 74 74 65	
+       72 21 20 24		
+ 02DA				DATA    ENDS 
+ 0000				CODE    SEGMENT 
+				        ASSUME CS:CODE,DS:DATA 
+ 0000  B8 ---- R		START:  MOV     AX,DATA 
+ 0003  8E D8			        MOV     DS,AX 
+				;屏幕显示方式设置宏指令SETCRT 
+				SETCRT  MACRO 
+				        MOV     AH,0 
+				        MOV     AL,2 
+				        INT     10H 
+				        ENDM 
+				;清屏宏指令CLEAR 
+				CLEAR   MACRO 
+				        MOV     AH,06H 
+				        MOV     AL,0 
+				        INT     10H 
+				        ENDM 
+				;设置光标宏指令CURSOR 
+				CURSOR  MACRO   ROW,CLM 
+					 
+				        MOV     AH,02H 
+				        MOV     BH,00H 
+				        MOV     DH,ROW 
+				        MOV     DL,CLM 
+					 
+				        INT     10H 
+				        ENDM 
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 21:18:33
+                                                             Page     1-4
+
+
+				;设置信息显示宏指令DSTRING 
+				DSTRING	MACRO	STRING 
+					PUSH	DX 
+					PUSH	AX 
+					MOV	DX,OFFSET STRING 
+					MOV	AH,09H 
+					INT	21H 
+					POP	AX 
+					POP	DX 
+					ENDM 
+					 
+ 0005  E8 00C9 R		CHONGX:	CALL	PINGM 
+					CURSOR	3,68 
+ 0008  B4 02                 1	        MOV     AH,02H 
+ 000A  B7 00                 1	        MOV     BH,00H 
+ 000C  B6 03                 1	        MOV     DH,3 
+ 000E  B2 44                 1	        MOV     DL,68 
+ 0010  CD 10                 1	        INT     10H 
+					DSTRING	TIS8 
+ 0012  52                    1		PUSH	DX 
+ 0013  50                    1		PUSH	AX 
+ 0014  BA 0122 R             1		MOV	DX,OFFSET TIS8 
+ 0017  B4 09                 1		MOV	AH,09H 
+ 0019  CD 21                 1		INT	21H 
+ 001B  58                    1		POP	AX 
+ 001C  5A                    1		POP	DX 
+					CURSOR	10,62 
+ 001D  B4 02                 1	        MOV     AH,02H 
+ 001F  B7 00                 1	        MOV     BH,00H 
+ 0021  B6 0A                 1	        MOV     DH,10 
+ 0023  B2 3E                 1	        MOV     DL,62 
+ 0025  CD 10                 1	        INT     10H 
+					DSTRING	TIS9 
+ 0027  52                    1		PUSH	DX 
+ 0028  50                    1		PUSH	AX 
+ 0029  BA 0128 R             1		MOV	DX,OFFSET TIS9 
+ 002C  B4 09                 1		MOV	AH,09H 
+ 002E  CD 21                 1		INT	21H 
+ 0030  58                    1		POP	AX 
+ 0031  5A                    1		POP	DX 
+					CURSOR	3,18 
+ 0032  B4 02                 1	        MOV     AH,02H 
+ 0034  B7 00                 1	        MOV     BH,00H 
+ 0036  B6 03                 1	        MOV     DH,3 
+ 0038  B2 12                 1	        MOV     DL,18 
+ 003A  CD 10                 1	        INT     10H 
+					DSTRING	TIS2 
+ 003C  52                    1		PUSH	DX 
+ 003D  50                    1		PUSH	AX 
+ 003E  BA 0083 R             1		MOV	DX,OFFSET TIS2 
+ 0041  B4 09                 1		MOV	AH,09H 
+ 0043  CD 21                 1		INT	21H 
+ 0045  58                    1		POP	AX 
+ 0046  5A                    1		POP	DX 
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 21:18:33
+                                                             Page     1-5
+
+
+					CURSOR	7,3 
+ 0047  B4 02                 1	        MOV     AH,02H 
+ 0049  B7 00                 1	        MOV     BH,00H 
+ 004B  B6 07                 1	        MOV     DH,7 
+ 004D  B2 03                 1	        MOV     DL,3 
+ 004F  CD 10                 1	        INT     10H 
+					DSTRING	TIS3 
+ 0051  52                    1		PUSH	DX 
+ 0052  50                    1		PUSH	AX 
+ 0053  BA 0098 R             1		MOV	DX,OFFSET TIS3 
+ 0056  B4 09                 1		MOV	AH,09H 
+ 0058  CD 21                 1		INT	21H 
+ 005A  58                    1		POP	AX 
+ 005B  5A                    1		POP	DX 
+					CURSOR	8,3 
+ 005C  B4 02                 1	        MOV     AH,02H 
+ 005E  B7 00                 1	        MOV     BH,00H 
+ 0060  B6 08                 1	        MOV     DH,8 
+ 0062  B2 03                 1	        MOV     DL,3 
+ 0064  CD 10                 1	        INT     10H 
+					DSTRING	TIS4 
+ 0066  52                    1		PUSH	DX 
+ 0067  50                    1		PUSH	AX 
+ 0068  BA 00B3 R             1		MOV	DX,OFFSET TIS4 
+ 006B  B4 09                 1		MOV	AH,09H 
+ 006D  CD 21                 1		INT	21H 
+ 006F  58                    1		POP	AX 
+ 0070  5A                    1		POP	DX 
+					CURSOR	9,3 
+ 0071  B4 02                 1	        MOV     AH,02H 
+ 0073  B7 00                 1	        MOV     BH,00H 
+ 0075  B6 09                 1	        MOV     DH,9 
+ 0077  B2 03                 1	        MOV     DL,3 
+ 0079  CD 10                 1	        INT     10H 
+					DSTRING	TIS5 
+ 007B  52                    1		PUSH	DX 
+ 007C  50                    1		PUSH	AX 
+ 007D  BA 00C9 R             1		MOV	DX,OFFSET TIS5 
+ 0080  B4 09                 1		MOV	AH,09H 
+ 0082  CD 21                 1		INT	21H 
+ 0084  58                    1		POP	AX 
+ 0085  5A                    1		POP	DX 
+					CURSOR	10,3 
+ 0086  B4 02                 1	        MOV     AH,02H 
+ 0088  B7 00                 1	        MOV     BH,00H 
+ 008A  B6 0A                 1	        MOV     DH,10 
+ 008C  B2 03                 1	        MOV     DL,3 
+ 008E  CD 10                 1	        INT     10H 
+					DSTRING	TIS6 
+ 0090  52                    1		PUSH	DX 
+ 0091  50                    1		PUSH	AX 
+ 0092  BA 00EA R             1		MOV	DX,OFFSET TIS6 
+ 0095  B4 09                 1		MOV	AH,09H 
+ 0097  CD 21                 1		INT	21H 
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 21:18:33
+                                                             Page     1-6
+
+
+ 0099  58                    1		POP	AX 
+ 009A  5A                    1		POP	DX 
+					CURSOR	11,3 
+ 009B  B4 02                 1	        MOV     AH,02H 
+ 009D  B7 00                 1	        MOV     BH,00H 
+ 009F  B6 0B                 1	        MOV     DH,11 
+ 00A1  B2 03                 1	        MOV     DL,3 
+ 00A3  CD 10                 1	        INT     10H 
+					DSTRING	TIS7 
+ 00A5  52                    1		PUSH	DX 
+ 00A6  50                    1		PUSH	AX 
+ 00A7  BA 0106 R             1		MOV	DX,OFFSET TIS7 
+ 00AA  B4 09                 1		MOV	AH,09H 
+ 00AC  CD 21                 1		INT	21H 
+ 00AE  58                    1		POP	AX 
+ 00AF  5A                    1		POP	DX 
+					 
+ 00B0  B4 00				MOV	AH,0 
+ 00B2  CD 16				INT	16H 
+ 00B4  3C 09				CMP	AL,9H 
+ 00B6  74 07				JE	TAB 
+ 00B8  3C 1B				CMP	AL,27 
+ 00BA  74 09				JE	TUIC 
+ 00BC  E9 0005 R			JMP	CHONGX 
+				 
+ 00BF  E8 00C9 R		TAB:    CALL	PINGM 
+				 
+ 00C2  E8 0155 R			CALL	FIRST 
+ 00C5  B4 4C			TUIC:   MOV     AH,4CH 
+ 00C7  CD 21			        INT     21H 
+				 
+ 00C9				PINGM	PROC	NEAR 
+ 00C9  50				PUSH	AX 
+ 00CA  53				PUSH	BX 
+ 00CB  51				PUSH	CX 
+ 00CC  52				PUSH	DX 
+				 
+ 00CD  BB 0050 R			MOV     BX,OFFSET HENGX+80 
+ 00D0  C6 07 24			        MOV     BYTE PTR[BX],'$' 
+				        SETCRT 
+ 00D3  B4 00                 1	        MOV     AH,0 
+ 00D5  B0 02                 1	        MOV     AL,2 
+ 00D7  CD 10                 1	        INT     10H 
+				        CLEAR 
+ 00D9  B4 06                 1	        MOV     AH,06H 
+ 00DB  B0 00                 1	        MOV     AL,0 
+ 00DD  CD 10                 1	        INT     10H 
+					CURSOR	1,0 
+ 00DF  B4 02                 1	        MOV     AH,02H 
+ 00E1  B7 00                 1	        MOV     BH,00H 
+ 00E3  B6 01                 1	        MOV     DH,1 
+ 00E5  B2 00                 1	        MOV     DL,0 
+ 00E7  CD 10                 1	        INT     10H 
+					DSTRING	HENGX 
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 21:18:33
+                                                             Page     1-7
+
+
+ 00E9  52                    1		PUSH	DX 
+ 00EA  50                    1		PUSH	AX 
+ 00EB  BA 0000 R             1		MOV	DX,OFFSET HENGX 
+ 00EE  B4 09                 1		MOV	AH,09H 
+ 00F0  CD 21                 1		INT	21H 
+ 00F2  58                    1		POP	AX 
+ 00F3  5A                    1		POP	DX 
+				        CURSOR  5,0		;设置第一条横线
+				光标位置 
+ 00F4  B4 02                 1	        MOV     AH,02H 
+ 00F6  B7 00                 1	        MOV     BH,00H 
+ 00F8  B6 05                 1	        MOV     DH,5 
+ 00FA  B2 00                 1	        MOV     DL,0 
+ 00FC  CD 10                 1	        INT     10H 
+				        DSTRING	HENGX		;输出第一条横线
+				 
+ 00FE  52                    1		PUSH	DX 
+ 00FF  50                    1		PUSH	AX 
+ 0100  BA 0000 R             1		MOV	DX,OFFSET HENGX 
+ 0103  B4 09                 1		MOV	AH,09H 
+ 0105  CD 21                 1		INT	21H 
+ 0107  58                    1		POP	AX 
+ 0108  5A                    1		POP	DX 
+					CURSOR	22,0 
+ 0109  B4 02                 1	        MOV     AH,02H 
+ 010B  B7 00                 1	        MOV     BH,00H 
+ 010D  B6 16                 1	        MOV     DH,22 
+ 010F  B2 00                 1	        MOV     DL,0 
+ 0111  CD 10                 1	        INT     10H 
+					DSTRING	HENGX 
+ 0113  52                    1		PUSH	DX 
+ 0114  50                    1		PUSH	AX 
+ 0115  BA 0000 R             1		MOV	DX,OFFSET HENGX 
+ 0118  B4 09                 1		MOV	AH,09H 
+ 011A  CD 21                 1		INT	21H 
+ 011C  58                    1		POP	AX 
+ 011D  5A                    1		POP	DX 
+					 
+ 011E  B9 0001				MOV	CX,1 
+					 
+ 0121				SHUX1:	CURSOR	CX,0		;输出第一条竖线
+				 
+ 0121  B4 02                 1	        MOV     AH,02H 
+ 0123  B7 00                 1	        MOV     BH,00H 
+ 0125  8A F1                 1	        MOV     DH,CX 
+aaaaa.asm(131): warning A4031: Operand types must match
+ 0127  B2 00                 1	        MOV     DL,0 
+ 0129  CD 10                 1	        INT     10H 
+ 012B  B2 2A				MOV	DL,'*' 
+ 012D  B4 02				MOV	AH,2 
+ 012F  CD 21				INT	21H 
+ 0131  41				INC	CX 
+ 0132  83 F9 16				CMP	CX,22 
+ 0135  75 EA				JNZ	SHUX1 
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 21:18:33
+                                                             Page     1-8
+
+
+				 
+				 
+				 
+ 0137  B9 0001				MOV	CX,1 
+ 013A				SHUX3:	CURSOR	CX,60		;输出第三条竖线
+				 
+ 013A  B4 02                 1	        MOV     AH,02H 
+ 013C  B7 00                 1	        MOV     BH,00H 
+ 013E  8A F1                 1	        MOV     DH,CX 
+aaaaa.asm(142): warning A4031: Operand types must match
+ 0140  B2 3C                 1	        MOV     DL,60 
+ 0142  CD 10                 1	        INT     10H 
+ 0144  B2 2A				MOV	DL,'*' 
+ 0146  B4 02				MOV	AH,2 
+ 0148  CD 21				INT	21H 
+ 014A  41				INC	CX 
+ 014B  83 F9 16				CMP	CX,22 
+ 014E  75 EA				JNZ	SHUX3 
+					 
+ 0150  5A				POP	DX 
+ 0151  59				POP	CX 
+ 0152  5B				POP	BX 
+ 0153  58				POP	AX 
+ 0154  C3				RET 
+ 0155				PINGM	ENDP 
+				;第一个屏幕上的子程序，用来显示时期和时间******
+				*********************************	 
+ 0155				FIRST	PROC	NEAR	 
+ 0155  50				PUSH	AX 
+ 0156  53				PUSH	BX 
+ 0157  51				PUSH	CX 
+ 0158  52				PUSH	DX 
+					 
+				TIMER1	MACRO 	REG, ADR	;将寄存器中存放
+				的二进制数转换为ASCII码并存内存中 
+				        PUSH	AX 
+				        PUSH  	BX 
+				        LEA  	SI, ADR 
+				        MOV  	AL, REG 
+				        MOV  	AH, 00 
+				        MOV   	BL, 10 
+				        DIV   	BL 
+				        ADD  	AL, 30H 
+				        MOV     [SI], AL          
+				        ADD  	AH, 30H 
+				        INC   	SI 
+				        MOV   	[SI], AH 
+				        POP   	BX 
+				        POP   	AX 
+				        ENDM 
+						 
+					CURSOR	7,3		 
+ 0159  B4 02                 1	        MOV     AH,02H 
+ 015B  B7 00                 1	        MOV     BH,00H 
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 21:18:33
+                                                             Page     1-9
+
+
+ 015D  B6 07                 1	        MOV     DH,7 
+ 015F  B2 03                 1	        MOV     DL,3 
+ 0161  CD 10                 1	        INT     10H 
+					DSTRING BUF1 
+ 0163  52                    1		PUSH	DX 
+ 0164  50                    1		PUSH	AX 
+ 0165  BA 0139 R             1		MOV	DX,OFFSET BUF1 
+ 0168  B4 09                 1		MOV	AH,09H 
+ 016A  CD 21                 1		INT	21H 
+ 016C  58                    1		POP	AX 
+ 016D  5A                    1		POP	DX 
+				        CURSOR	11,3	 
+ 016E  B4 02                 1	        MOV     AH,02H 
+ 0170  B7 00                 1	        MOV     BH,00H 
+ 0172  B6 0B                 1	        MOV     DH,11 
+ 0174  B2 03                 1	        MOV     DL,3 
+ 0176  CD 10                 1	        INT     10H 
+				        DSTRING INFOR 
+ 0178  52                    1		PUSH	DX 
+ 0179  50                    1		PUSH	AX 
+ 017A  BA 0189 R             1		MOV	DX,OFFSET INFOR 
+ 017D  B4 09                 1		MOV	AH,09H 
+ 017F  CD 21                 1		INT	21H 
+ 0181  58                    1		POP	AX 
+ 0182  5A                    1		POP	DX 
+ 0183  B4 2A			LOOPR: 	MOV	AH, 2AH 
+ 0185  CD 21			        INT    	21H		;取当前日期
+					 
+ 0187  51				PUSH	CX 
+ 0188  8A E8			        MOV     CH,AL 
+				        TIMER1  CH,MSE 		;将星期值转换为
+				ASCII码并存放在MSE单元中 
+ 018A  50                    1	        PUSH	AX 
+ 018B  53                    1	        PUSH  	BX 
+ 018C  8D 36 0180 R          1	        LEA  	SI, MSE 
+ 0190  8A C5                 1	        MOV  	AL, CH 
+ 0192  B4 00                 1	        MOV  	AH, 00 
+ 0194  B3 0A                 1	        MOV   	BL, 10 
+ 0196  F6 F3                 1	        DIV   	BL 
+ 0198  04 30                 1	        ADD  	AL, 30H 
+ 019A  88 04                 1	        MOV     [SI], AL 
+ 019C  80 C4 30              1	        ADD  	AH, 30H 
+ 019F  46                    1	        INC   	SI 
+ 01A0  88 24                 1	        MOV   	[SI], AH 
+ 01A2  5B                    1	        POP   	BX 
+ 01A3  58                    1	        POP   	AX 
+ 01A4  8A EA			        MOV  	CH,DL  
+				        TIMER1 	CH,DAY		;将几号转换为AS
+				CII码并存放在DAY中		 
+ 01A6  50                    1	        PUSH	AX 
+ 01A7  53                    1	        PUSH  	BX 
+ 01A8  8D 36 0169 R          1	        LEA  	SI, DAY 
+ 01AC  8A C5                 1	        MOV  	AL, CH 
+ 01AE  B4 00                 1	        MOV  	AH, 00 
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 21:18:33
+                                                             Page     1-10
+
+
+ 01B0  B3 0A                 1	        MOV   	BL, 10 
+ 01B2  F6 F3                 1	        DIV   	BL 
+ 01B4  04 30                 1	        ADD  	AL, 30H 
+ 01B6  88 04                 1	        MOV     [SI], AL 
+ 01B8  80 C4 30              1	        ADD  	AH, 30H 
+ 01BB  46                    1	        INC   	SI 
+ 01BC  88 24                 1	        MOV   	[SI], AH 
+ 01BE  5B                    1	        POP   	BX 
+ 01BF  58                    1	        POP   	AX 
+ 01C0  59			        POP	CX 
+				        TIMER1  DH,MONTH	;将月份转换为AS
+				CII码并存放在MONTH中         
+ 01C1  50                    1	        PUSH	AX 
+ 01C2  53                    1	        PUSH  	BX 
+ 01C3  8D 36 015F R          1	        LEA  	SI, MONTH 
+ 01C7  8A C6                 1	        MOV  	AL, DH 
+ 01C9  B4 00                 1	        MOV  	AH, 00 
+ 01CB  B3 0A                 1	        MOV   	BL, 10 
+ 01CD  F6 F3                 1	        DIV   	BL 
+ 01CF  04 30                 1	        ADD  	AL, 30H 
+ 01D1  88 04                 1	        MOV     [SI], AL 
+ 01D3  80 C4 30              1	        ADD  	AH, 30H 
+ 01D6  46                    1	        INC   	SI 
+ 01D7  88 24                 1	        MOV   	[SI], AH 
+ 01D9  5B                    1	        POP   	BX 
+ 01DA  58                    1	        POP   	AX 
+					 
+ 01DB  8B C1				MOV 	AX,CX 
+ 01DD  B9 000A				MOV 	CX,10 
+ 01E0  8D 1E 0158 R		        LEA	BX,YEAR+4 
+ 01E4				LOOP1: 
+ 01E4  BA 0000				MOV 	DX,0 
+ 01E7  F7 F1				DIV 	CX 
+ 01E9  80 C2 30				ADD 	DL,30H 
+ 01EC  4B				DEC 	BX 
+ 01ED  88 17				MOV	[BX],DL 
+ 01EF  0B C0				OR 	AX,AX 
+ 01F1  75 F1				JNZ 	LOOP1	 
+				 
+					CURSOR 	8,4		;设置光标位置显
+				示当前时期			 
+ 01F3  B4 02                 1	        MOV     AH,02H 
+ 01F5  B7 00                 1	        MOV     BH,00H 
+ 01F7  B6 08                 1	        MOV     DH,8 
+ 01F9  B2 04                 1	        MOV     DL,4 
+ 01FB  CD 10                 1	        INT     10H 
+					DSTRING	YEAR 
+ 01FD  52                    1		PUSH	DX 
+ 01FE  50                    1		PUSH	AX 
+ 01FF  BA 0154 R             1		MOV	DX,OFFSET YEAR 
+ 0202  B4 09                 1		MOV	AH,09H 
+ 0204  CD 21                 1		INT	21H 
+ 0206  58                    1		POP	AX 
+ 0207  5A                    1		POP	DX 
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 21:18:33
+                                                             Page     1-11
+
+
+					DSTRING	MONTH 
+ 0208  52                    1		PUSH	DX 
+ 0209  50                    1		PUSH	AX 
+ 020A  BA 015F R             1		MOV	DX,OFFSET MONTH 
+ 020D  B4 09                 1		MOV	AH,09H 
+ 020F  CD 21                 1		INT	21H 
+ 0211  58                    1		POP	AX 
+ 0212  5A                    1		POP	DX 
+				        DSTRING	DAY 
+ 0213  52                    1		PUSH	DX 
+ 0214  50                    1		PUSH	AX 
+ 0215  BA 0169 R             1		MOV	DX,OFFSET DAY 
+ 0218  B4 09                 1		MOV	AH,09H 
+ 021A  CD 21                 1		INT	21H 
+ 021C  58                    1		POP	AX 
+ 021D  5A                    1		POP	DX 
+				        DSTRING	MSE 
+ 021E  52                    1		PUSH	DX 
+ 021F  50                    1		PUSH	AX 
+ 0220  BA 0180 R             1		MOV	DX,OFFSET MSE 
+ 0223  B4 09                 1		MOV	AH,09H 
+ 0225  CD 21                 1		INT	21H 
+ 0227  58                    1		POP	AX 
+ 0228  5A                    1		POP	DX 
+				     	 
+				 
+ 0229				SHIJ:	CURSOR	9,3		 
+ 0229  B4 02                 1	        MOV     AH,02H 
+ 022B  B7 00                 1	        MOV     BH,00H 
+ 022D  B6 09                 1	        MOV     DH,9 
+ 022F  B2 03                 1	        MOV     DL,3 
+ 0231  CD 10                 1	        INT     10H 
+					DSTRING BUF2 
+ 0233  52                    1		PUSH	DX 
+ 0234  50                    1		PUSH	AX 
+ 0235  BA 0143 R             1		MOV	DX,OFFSET BUF2 
+ 0238  B4 09                 1		MOV	AH,09H 
+ 023A  CD 21                 1		INT	21H 
+ 023C  58                    1		POP	AX 
+ 023D  5A                    1		POP	DX 
+ 023E  B4 2C			LOOP2: 	MOV	AH, 2CH 
+ 0240  CD 21			        INT    	21H		 
+ 0242  51				PUSH	CX 
+ 0243  8A EA			        MOV     CH,DL 
+				        TIMER1  CH,MSECOND 	;将毫秒值转换为
+				ASCII码并存放在MSECOND中 
+ 0245  50                    1	        PUSH	AX 
+ 0246  53                    1	        PUSH  	BX 
+ 0247  8D 36 017D R          1	        LEA  	SI, MSECOND 
+ 024B  8A C5                 1	        MOV  	AL, CH 
+ 024D  B4 00                 1	        MOV  	AH, 00 
+ 024F  B3 0A                 1	        MOV   	BL, 10 
+ 0251  F6 F3                 1	        DIV   	BL 
+ 0253  04 30                 1	        ADD  	AL, 30H 
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 21:18:33
+                                                             Page     1-12
+
+
+ 0255  88 04                 1	        MOV     [SI], AL 
+ 0257  80 C4 30              1	        ADD  	AH, 30H 
+ 025A  46                    1	        INC   	SI 
+ 025B  88 24                 1	        MOV   	[SI], AH 
+ 025D  5B                    1	        POP   	BX 
+ 025E  58                    1	        POP   	AX 
+ 025F  8A EE			        MOV  	CH, DH  
+				        TIMER1 	CH, SECOND	;将秒值转换为AS
+				CII码并存放在SECOND中		 
+ 0261  50                    1	        PUSH	AX 
+ 0262  53                    1	        PUSH  	BX 
+ 0263  8D 36 0179 R          1	        LEA  	SI, SECOND 
+ 0267  8A C5                 1	        MOV  	AL, CH 
+ 0269  B4 00                 1	        MOV  	AH, 00 
+ 026B  B3 0A                 1	        MOV   	BL, 10 
+ 026D  F6 F3                 1	        DIV   	BL 
+ 026F  04 30                 1	        ADD  	AL, 30H 
+ 0271  88 04                 1	        MOV     [SI], AL 
+ 0273  80 C4 30              1	        ADD  	AH, 30H 
+ 0276  46                    1	        INC   	SI 
+ 0277  88 24                 1	        MOV   	[SI], AH 
+ 0279  5B                    1	        POP   	BX 
+ 027A  58                    1	        POP   	AX 
+ 027B  59			        POP	CX 
+				       	TIMER1	CL,MINUTE	;将分值转换为AS
+				CII码并存放在MINUTE中		 
+ 027C  50                    1	        PUSH	AX 
+ 027D  53                    1	        PUSH  	BX 
+ 027E  8D 36 0175 R          1	        LEA  	SI, MINUTE 
+ 0282  8A C1                 1	        MOV  	AL, CL 
+ 0284  B4 00                 1	        MOV  	AH, 00 
+ 0286  B3 0A                 1	        MOV   	BL, 10 
+ 0288  F6 F3                 1	        DIV   	BL 
+ 028A  04 30                 1	        ADD  	AL, 30H 
+ 028C  88 04                 1	        MOV     [SI], AL 
+ 028E  80 C4 30              1	        ADD  	AH, 30H 
+ 0291  46                    1	        INC   	SI 
+ 0292  88 24                 1	        MOV   	[SI], AH 
+ 0294  5B                    1	        POP   	BX 
+ 0295  58                    1	        POP   	AX 
+				      	TIMER1	CH,HOUR		;将小时值转换为
+				ASCII码并存放在HOUR中 
+ 0296  50                    1	        PUSH	AX 
+ 0297  53                    1	        PUSH  	BX 
+ 0298  8D 36 0171 R          1	        LEA  	SI, HOUR 
+ 029C  8A C5                 1	        MOV  	AL, CH 
+ 029E  B4 00                 1	        MOV  	AH, 00 
+ 02A0  B3 0A                 1	        MOV   	BL, 10 
+ 02A2  F6 F3                 1	        DIV   	BL 
+ 02A4  04 30                 1	        ADD  	AL, 30H 
+ 02A6  88 04                 1	        MOV     [SI], AL 
+ 02A8  80 C4 30              1	        ADD  	AH, 30H 
+ 02AB  46                    1	        INC   	SI 
+ 02AC  88 24                 1	        MOV   	[SI], AH 
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 21:18:33
+                                                             Page     1-13
+
+
+ 02AE  5B                    1	        POP   	BX 
+ 02AF  58                    1	        POP   	AX 
+					CURSOR  10,4		;设置光标位置显
+				示当前时间		 
+ 02B0  B4 02                 1	        MOV     AH,02H 
+ 02B2  B7 00                 1	        MOV     BH,00H 
+ 02B4  B6 0A                 1	        MOV     DH,10 
+ 02B6  B2 04                 1	        MOV     DL,4 
+ 02B8  CD 10                 1	        INT     10H 
+					DSTRING	HOUR 
+ 02BA  52                    1		PUSH	DX 
+ 02BB  50                    1		PUSH	AX 
+ 02BC  BA 0171 R             1		MOV	DX,OFFSET HOUR 
+ 02BF  B4 09                 1		MOV	AH,09H 
+ 02C1  CD 21                 1		INT	21H 
+ 02C3  58                    1		POP	AX 
+ 02C4  5A                    1		POP	DX 
+					DSTRING	MINUTE 
+ 02C5  52                    1		PUSH	DX 
+ 02C6  50                    1		PUSH	AX 
+ 02C7  BA 0175 R             1		MOV	DX,OFFSET MINUTE 
+ 02CA  B4 09                 1		MOV	AH,09H 
+ 02CC  CD 21                 1		INT	21H 
+ 02CE  58                    1		POP	AX 
+ 02CF  5A                    1		POP	DX 
+				        DSTRING	SECOND 
+ 02D0  52                    1		PUSH	DX 
+ 02D1  50                    1		PUSH	AX 
+ 02D2  BA 0179 R             1		MOV	DX,OFFSET SECOND 
+ 02D5  B4 09                 1		MOV	AH,09H 
+ 02D7  CD 21                 1		INT	21H 
+ 02D9  58                    1		POP	AX 
+ 02DA  5A                    1		POP	DX 
+				        DSTRING	MSECOND 
+ 02DB  52                    1		PUSH	DX 
+ 02DC  50                    1		PUSH	AX 
+ 02DD  BA 017D R             1		MOV	DX,OFFSET MSECOND 
+ 02E0  B4 09                 1		MOV	AH,09H 
+ 02E2  CD 21                 1		INT	21H 
+ 02E4  58                    1		POP	AX 
+ 02E5  5A                    1		POP	DX 
+					 
+ 02E6  B4 0B				MOV 	AH,0BH		 
+ 02E8  CD 21			    	INT   	21H 
+ 02EA  3C 00			      	CMP   	AL,00H 
+ 02EC  75 03			        JNZ    	EXITT		 
+ 02EE  E9 023E R		     	JMP   	LOOP2	 
+ 02F1  B4 00			EXITT:	MOV	AH,0 
+ 02F3  CD 16				INT	16H 
+ 02F5  3C 09				CMP	AL,9H 
+ 02F7  74 06				JE	TAB1 
+ 02F9  3C 1B				CMP	AL,27 
+ 02FB  74 08				JE	TUIC1 
+ 02FD  EB F2				JMP	EXITT 
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 21:18:33
+                                                             Page     1-14
+
+
+ 02FF  E8 00C9 R		TAB1:	CALL	PINGM 
+ 0302  E8 030E R			CALL	SECONDS 
+ 0305  B4 4C			TUIC1:	MOV	AH,4CH 
+ 0307  CD 21				INT	21H 
+					 
+ 0309  5A				POP	DX 
+ 030A  59				POP	CX 
+ 030B  5B				POP	BX 
+ 030C  58				POP	AX 
+ 030D  C3				RET 
+ 030E				FIRST	ENDP		 
+				;第一个子程序结束处****************************
+				****************************** 
+				 
+				;第二个子程序，用来计算1+2+...+n的和***********
+				****************************** 
+ 030E				SECONDS	PROC	NEAR 
+ 030E  50				PUSH	AX 
+ 030F  53				PUSH	BX 
+ 0310  51				PUSH	CX 
+ 0311  52				PUSH	DX	 
+					CURSOR	7,3 
+ 0312  B4 02                 1	        MOV     AH,02H 
+ 0314  B7 00                 1	        MOV     BH,00H 
+ 0316  B6 07                 1	        MOV     DH,7 
+ 0318  B2 03                 1	        MOV     DL,3 
+ 031A  CD 10                 1	        INT     10H 
+					DSTRING	SINF1 
+ 031C  52                    1		PUSH	DX 
+ 031D  50                    1		PUSH	AX 
+ 031E  BA 01A3 R             1		MOV	DX,OFFSET SINF1 
+ 0321  B4 09                 1		MOV	AH,09H 
+ 0323  CD 21                 1		INT	21H 
+ 0325  58                    1		POP	AX 
+ 0326  5A                    1		POP	DX 
+					CURSOR	8,4 
+ 0327  B4 02                 1	        MOV     AH,02H 
+ 0329  B7 00                 1	        MOV     BH,00H 
+ 032B  B6 08                 1	        MOV     DH,8 
+ 032D  B2 04                 1	        MOV     DL,4 
+ 032F  CD 10                 1	        INT     10H 
+ 0331  BA 01C9 R			MOV     DX,OFFSET SIBUF 
+ 0334  B4 0A			        MOV     AH,0AH 
+ 0336  CD 21			        INT     21H 
+ 0338  8A 0E 01CA R			MOV     CL,SIBUF+1 
+ 033C  B5 00			        MOV     CH,0 
+				        
+				         
+ 033E  BE 01CB R		        MOV     SI,OFFSET SIBUF+2 
+ 0341  B8 0000			        MOV     AX,0 
+ 0344  BA 000A			SAGAIN: MOV     DX,10 
+ 0347  F7 E2			        MUL     DX 
+ 0349  80 24 0F			        AND     BYTE PTR[SI],0FH 
+ 034C  02 04			        ADD     AL,[SI] 
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 21:18:33
+                                                             Page     1-15
+
+
+ 034E  80 D4 00			        ADC     AH,0 
+ 0351  46			        INC     SI 
+ 0352  E2 F0			        LOOP    SAGAIN 
+				 
+ 0354  8B C8			        MOV     CX,AX 
+ 0356  B8 0000			        MOV     AX,0 
+ 0359  BB 0001			        MOV     BX,1 
+ 035C  03 C3			SLOOP2: ADD     AX,BX 
+ 035E  43			        INC     BX 
+ 035F  E2 FB			        LOOP    SLOOP2 
+ 0361  BB 01D6 R		        MOV     BX,OFFSET SOBUF+5 
+ 0364  C6 07 24			        MOV     BYTE PTR[BX],'$' 
+ 0367  B9 000A			        MOV     CX,10 
+ 036A  BA 0000			SLOOP1: MOV     DX,0 
+ 036D  F7 F1			        DIV     CX 
+ 036F  80 C2 30			        ADD     DL,30H 
+ 0372  4B			        DEC     BX 
+ 0373  88 17			        MOV     [BX],DL 
+ 0375  0B C0			        OR      AX,AX 
+ 0377  75 F1			        JNZ     SLOOP1 
+					CURSOR	9,3	 
+ 0379  B4 02                 1	        MOV     AH,02H 
+ 037B  B7 00                 1	        MOV     BH,00H 
+ 037D  B6 09                 1	        MOV     DH,9 
+ 037F  B2 03                 1	        MOV     DL,3 
+ 0381  CD 10                 1	        INT     10H 
+				      	DSTRING	SINF2 
+ 0383  52                    1		PUSH	DX 
+ 0384  50                    1		PUSH	AX 
+ 0385  BA 01BA R             1		MOV	DX,OFFSET SINF2 
+ 0388  B4 09                 1		MOV	AH,09H 
+ 038A  CD 21                 1		INT	21H 
+ 038C  58                    1		POP	AX 
+ 038D  5A                    1		POP	DX 
+				        DSTRING	SOBUF 
+ 038E  52                    1		PUSH	DX 
+ 038F  50                    1		PUSH	AX 
+ 0390  BA 01D1 R             1		MOV	DX,OFFSET SOBUF 
+ 0393  B4 09                 1		MOV	AH,09H 
+ 0395  CD 21                 1		INT	21H 
+ 0397  58                    1		POP	AX 
+ 0398  5A                    1		POP	DX 
+ 0399  B4 00			SHIS:	MOV	AH,0 
+ 039B  CD 16				INT	16H 
+ 039D  3C 09				CMP	AL,9H 
+ 039F  74 06				JE	TAB2 
+ 03A1  3C 1B				CMP	AL,27 
+ 03A3  74 08				JE	TUIC2 
+ 03A5  EB F2				JMP	SHIS 
+ 03A7  E8 00C9 R		TAB2:	CALL	PINGM 
+ 03AA  E8 03B6 R			CALL	THIRD 
+ 03AD  B4 4C			TUIC2:	MOV	AH,4CH 
+ 03AF  CD 21				INT	21H 
+ 03B1  5A				POP	DX 
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 21:18:33
+                                                             Page     1-16
+
+
+ 03B2  59				POP	CX 
+ 03B3  5B				POP	BX 
+ 03B4  58				POP	AX 
+ 03B5  C3				RET 
+ 03B6				SECONDS	ENDP 
+				;第二个子程序结束******************************
+				******************** 
+				;第三个子程序，输入一行字符，逆序输出**********
+				******************** 
+ 03B6				THIRD	PROC	NEAR 
+ 03B6  50				PUSH	AX 
+ 03B7  53				PUSH	BX 
+ 03B8  51				PUSH	CX 
+ 03B9  52				PUSH	DX 
+				 
+					CURSOR	7,3 
+ 03BA  B4 02                 1	        MOV     AH,02H 
+ 03BC  B7 00                 1	        MOV     BH,00H 
+ 03BE  B6 07                 1	        MOV     DH,7 
+ 03C0  B2 03                 1	        MOV     DL,3 
+ 03C2  CD 10                 1	        INT     10H 
+					DSTRING	INPUT 
+ 03C4  52                    1		PUSH	DX 
+ 03C5  50                    1		PUSH	AX 
+ 03C6  BA 01DA R             1		MOV	DX,OFFSET INPUT 
+ 03C9  B4 09                 1		MOV	AH,09H 
+ 03CB  CD 21                 1		INT	21H 
+ 03CD  58                    1		POP	AX 
+ 03CE  5A                    1		POP	DX 
+					CURSOR	8,3 
+ 03CF  B4 02                 1	        MOV     AH,02H 
+ 03D1  B7 00                 1	        MOV     BH,00H 
+ 03D3  B6 08                 1	        MOV     DH,8 
+ 03D5  B2 03                 1	        MOV     DL,3 
+ 03D7  CD 10                 1	        INT     10H 
+ 03D9  BA 01E5 R			MOV	DX,OFFSET STRING1 
+ 03DC  B4 0A				MOV	AH,10 
+ 03DE  CD 21				INT	21H 
+ 03E0  8A 0E 01E6 R			MOV 	CL,STRING1+1  
+ 03E4  B5 00				MOV 	CH,0  
+ 03E6  BE 01E5 R			MOV 	SI,OFFSET STRING1  
+ 03E9  03 F1				ADD 	SI,CX  
+ 03EB  46				INC 	SI  
+ 03EC  BF 0227 R			MOV	DI,OFFSET STRING3 
+ 03EF				TAGAIN:  
+ 03EF  8A 04				MOV 	AL,[SI]  
+ 03F1  88 05				MOV	[DI],AL  
+ 03F3  4E				DEC 	SI  
+				 
+ 03F4  47				INC	DI 
+ 03F5  E2 F8				LOOP 	TAGAIN 
+ 03F7  C6 05 24				MOV	BYTE PTR [DI],'$' 
+					CURSOR	9,3 
+ 03FA  B4 02                 1	        MOV     AH,02H 
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 21:18:33
+                                                             Page     1-17
+
+
+ 03FC  B7 00                 1	        MOV     BH,00H 
+ 03FE  B6 09                 1	        MOV     DH,9 
+ 0400  B2 03                 1	        MOV     DL,3 
+ 0402  CD 10                 1	        INT     10H 
+					DSTRING	SINF2 
+ 0404  52                    1		PUSH	DX 
+ 0405  50                    1		PUSH	AX 
+ 0406  BA 01BA R             1		MOV	DX,OFFSET SINF2 
+ 0409  B4 09                 1		MOV	AH,09H 
+ 040B  CD 21                 1		INT	21H 
+ 040D  58                    1		POP	AX 
+ 040E  5A                    1		POP	DX 
+					DSTRING	STRING3 
+ 040F  52                    1		PUSH	DX 
+ 0410  50                    1		PUSH	AX 
+ 0411  BA 0227 R             1		MOV	DX,OFFSET STRING3 
+ 0414  B4 09                 1		MOV	AH,09H 
+ 0416  CD 21                 1		INT	21H 
+ 0418  58                    1		POP	AX 
+ 0419  5A                    1		POP	DX 
+ 041A  B4 00			TSHIS:	MOV	AH,0 
+ 041C  CD 16				INT	16H 
+ 041E  3C 09				CMP	AL,9H 
+ 0420  74 06				JE	TAB3 
+ 0422  3C 1B				CMP	AL,27 
+ 0424  74 08				JE	TUIC3 
+ 0426  EB F2				JMP	TSHIS 
+ 0428  E8 00C9 R		TAB3:	CALL	PINGM 
+ 042B  E8 0437 R			CALL	FOURTH 
+ 042E  B4 4C			TUIC3:	MOV	AH,4CH 
+ 0430  CD 21				INT	21H	 
+ 0432  5A				POP	DX 
+ 0433  59				POP	CX 
+ 0434  5B				POP	BX 
+ 0435  58				POP	AX 
+ 0436  C3				RET 
+ 0437				THIRD	ENDP 
+				;第三个子程序结束******************************
+				************* 
+ 0437				FOURTH	PROC	NEAR 
+ 0437  50				PUSH	AX 
+ 0438  53				PUSH	BX 
+ 0439  51				PUSH	CX 
+ 043A  52				PUSH	DX 
+					CURSOR	7,3 
+ 043B  B4 02                 1	        MOV     AH,02H 
+ 043D  B7 00                 1	        MOV     BH,00H 
+ 043F  B6 07                 1	        MOV     DH,7 
+ 0441  B2 03                 1	        MOV     DL,3 
+ 0443  CD 10                 1	        INT     10H 
+					DSTRING	FINFOR1    
+ 0445  52                    1		PUSH	DX 
+ 0446  50                    1		PUSH	AX 
+ 0447  BA 0247 R             1		MOV	DX,OFFSET FINFOR1 
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 21:18:33
+                                                             Page     1-18
+
+
+ 044A  B4 09                 1		MOV	AH,09H 
+ 044C  CD 21                 1		INT	21H 
+ 044E  58                    1		POP	AX 
+ 044F  5A                    1		POP	DX 
+ 0450  B4 01			        MOV 	AH,01H        
+ 0452  CD 21			        INT	21H         
+ 0454  3C 30			        CMP  	AL,'0'  
+ 0456  72 5F			        JB   	OTHER  
+ 0458  3C 39			        CMP  	AL,'9'  
+ 045A  76 43			        JBE  	DIGIT   
+ 045C  3C 41			        CMP  	AL,'A'  
+ 045E  72 57			        JB   	OTHER   
+ 0460  3C 5A			        CMP  	AL,'Z'  
+ 0462  76 23			        JBE  	UPPER  
+ 0464  3C 61			        CMP  	AL,'a'   
+ 0466  72 4F			        JB   	OTHER    
+ 0468  3C 7A			        CMP  	AL,'z'  
+ 046A  76 03			        JBE  	LOWER  
+ 046C  EB 5E 90			        JMP  	PEND  
+ 046F				LOWER:   
+					CURSOR	8,3                            
+				   
+ 046F  B4 02                 1	        MOV     AH,02H 
+ 0471  B7 00                 1	        MOV     BH,00H 
+ 0473  B6 08                 1	        MOV     DH,8 
+ 0475  B2 03                 1	        MOV     DL,3 
+ 0477  CD 10                 1	        INT     10H 
+				       	DSTRING	FINFOR2 
+ 0479  52                    1		PUSH	DX 
+ 047A  50                    1		PUSH	AX 
+ 047B  BA 026F R             1		MOV	DX,OFFSET FINFOR2 
+ 047E  B4 09                 1		MOV	AH,09H 
+ 0480  CD 21                 1		INT	21H 
+ 0482  58                    1		POP	AX 
+ 0483  5A                    1		POP	DX 
+ 0484  EB 46 90			        JMP 	PEND                      
+ 0487				UPPER:   
+					CURSOR	8,3                          
+ 0487  B4 02                 1	        MOV     AH,02H 
+ 0489  B7 00                 1	        MOV     BH,00H 
+ 048B  B6 08                 1	        MOV     DH,8 
+ 048D  B2 03                 1	        MOV     DL,3 
+ 048F  CD 10                 1	        INT     10H 
+				       	DSTRING FINFOR3 
+ 0491  52                    1		PUSH	DX 
+ 0492  50                    1		PUSH	AX 
+ 0493  BA 028E R             1		MOV	DX,OFFSET FINFOR3 
+ 0496  B4 09                 1		MOV	AH,09H 
+ 0498  CD 21                 1		INT	21H 
+ 049A  58                    1		POP	AX 
+ 049B  5A                    1		POP	DX 
+ 049C  EB 2E 90			        JMP PEND  
+ 049F				DIGIT:   
+					CURSOR	8,3                        
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 21:18:33
+                                                             Page     1-19
+
+
+ 049F  B4 02                 1	        MOV     AH,02H 
+ 04A1  B7 00                 1	        MOV     BH,00H 
+ 04A3  B6 08                 1	        MOV     DH,8 
+ 04A5  B2 03                 1	        MOV     DL,3 
+ 04A7  CD 10                 1	        INT     10H 
+				        DSTRING	FINFOR4 
+ 04A9  52                    1		PUSH	DX 
+ 04AA  50                    1		PUSH	AX 
+ 04AB  BA 02AD R             1		MOV	DX,OFFSET FINFOR4 
+ 04AE  B4 09                 1		MOV	AH,09H 
+ 04B0  CD 21                 1		INT	21H 
+ 04B2  58                    1		POP	AX 
+ 04B3  5A                    1		POP	DX 
+ 04B4  EB 16 90			        JMP PEND  
+ 04B7				OTHER:     
+					CURSOR	8,3                    
+ 04B7  B4 02                 1	        MOV     AH,02H 
+ 04B9  B7 00                 1	        MOV     BH,00H 
+ 04BB  B6 08                 1	        MOV     DH,8 
+ 04BD  B2 03                 1	        MOV     DL,3 
+ 04BF  CD 10                 1	        INT     10H 
+				        DSTRING	FINFOR5         
+ 04C1  52                    1		PUSH	DX 
+ 04C2  50                    1		PUSH	AX 
+ 04C3  BA 02C1 R             1		MOV	DX,OFFSET FINFOR5 
+ 04C6  B4 09                 1		MOV	AH,09H 
+ 04C8  CD 21                 1		INT	21H 
+ 04CA  58                    1		POP	AX 
+ 04CB  5A                    1		POP	DX 
+ 04CC  B4 00			PEND:   MOV	AH,0 
+ 04CE  CD 16				INT	16H 
+ 04D0  3C 09				CMP	AL,9H 
+ 04D2  74 06				JE	TAB4 
+ 04D4  3C 1B				CMP	AL,27 
+ 04D6  74 08				JE	TUIC4 
+ 04D8  EB F2				JMP	PEND 
+ 04DA  E8 00C9 R		TAB4:	CALL	PINGM 
+ 04DD  E8 0155 R			CALL	FIRST	 
+ 04E0  B4 4C			TUIC4:  MOV 	AH,4CH 
+ 04E2  CD 21			        INT 	21H 
+ 04E4  5A				POP	DX 
+ 04E5  59				POP	CX 
+ 04E6  5B				POP	BX 
+ 04E7  58				POP	AX 
+ 04E8  C3				RET 
+ 04E9				FOURTH	ENDP 
+ 04E9				CODE    ENDS 
+				        END     START 
+
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 21:18:33
+                                                             Symbols-1
+
+
+Macros:
+
+		N a m e			Lines
+
+CLEAR  . . . . . . . . . . . . .  	   3
+CURSOR . . . . . . . . . . . . .  	   5
+DSTRING  . . . . . . . . . . . .  	   7
+SETCRT . . . . . . . . . . . . .  	   3
+TIMER1 . . . . . . . . . . . . .  	  14
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+CODE . . . . . . . . . . . . . .  	04E9	PARA	NONE	
+DATA . . . . . . . . . . . . . .  	02DA	PARA	NONE	
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+BUF1 . . . . . . . . . . . . . .  	L BYTE	0139	DATA
+BUF2 . . . . . . . . . . . . . .  	L BYTE	0143	DATA
+
+CHONGX . . . . . . . . . . . . .  	L NEAR	0005	CODE
+
+DAY  . . . . . . . . . . . . . .  	L BYTE	0169	DATA
+DIGIT  . . . . . . . . . . . . .  	L NEAR	049F	CODE
+
+EXITT  . . . . . . . . . . . . .  	L NEAR	02F1	CODE
+
+FINFOR1  . . . . . . . . . . . .  	L BYTE	0247	DATA
+FINFOR2  . . . . . . . . . . . .  	L BYTE	026F	DATA
+FINFOR3  . . . . . . . . . . . .  	L BYTE	028E	DATA
+FINFOR4  . . . . . . . . . . . .  	L BYTE	02AD	DATA
+FINFOR5  . . . . . . . . . . . .  	L BYTE	02C1	DATA
+FIRST  . . . . . . . . . . . . .  	N PROC	0155	CODE	Length = 01B9
+FOURTH . . . . . . . . . . . . .  	N PROC	0437	CODE	Length = 00B2
+
+HENGX  . . . . . . . . . . . . .  	L BYTE	0000	DATA	Length = 0064
+HOUR . . . . . . . . . . . . . .  	L BYTE	0171	DATA
+
+INFOR  . . . . . . . . . . . . .  	L BYTE	0189	DATA
+INPUT  . . . . . . . . . . . . .  	L BYTE	01DA	DATA
+
+LOOP1  . . . . . . . . . . . . .  	L NEAR	01E4	CODE
+LOOP2  . . . . . . . . . . . . .  	L NEAR	023E	CODE
+LOOPR  . . . . . . . . . . . . .  	L NEAR	0183	CODE
+LOWER  . . . . . . . . . . . . .  	L NEAR	046F	CODE
+
+MINUTE . . . . . . . . . . . . .  	L BYTE	0175	DATA
+MONTH  . . . . . . . . . . . . .  	L BYTE	015F	DATA
+MSE  . . . . . . . . . . . . . .  	L BYTE	0180	DATA
+MSECOND  . . . . . . . . . . . .  	L BYTE	017D	DATA
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 21:18:33
+                                                             Symbols-2
+
+
+
+OTHER  . . . . . . . . . . . . .  	L NEAR	04B7	CODE
+
+PEND . . . . . . . . . . . . . .  	L NEAR	04CC	CODE
+PINGM  . . . . . . . . . . . . .  	N PROC	00C9	CODE	Length = 008C
+
+SAGAIN . . . . . . . . . . . . .  	L NEAR	0344	CODE
+SECOND . . . . . . . . . . . . .  	L BYTE	0179	DATA
+SECONDS  . . . . . . . . . . . .  	N PROC	030E	CODE	Length = 00A8
+SHIJ . . . . . . . . . . . . . .  	L NEAR	0229	CODE
+SHIS . . . . . . . . . . . . . .  	L NEAR	0399	CODE
+SHUX1  . . . . . . . . . . . . .  	L NEAR	0121	CODE
+SHUX3  . . . . . . . . . . . . .  	L NEAR	013A	CODE
+SIBUF  . . . . . . . . . . . . .  	L BYTE	01C9	DATA
+SINF1  . . . . . . . . . . . . .  	L BYTE	01A3	DATA
+SINF2  . . . . . . . . . . . . .  	L BYTE	01BA	DATA
+SLOOP1 . . . . . . . . . . . . .  	L NEAR	036A	CODE
+SLOOP2 . . . . . . . . . . . . .  	L NEAR	035C	CODE
+SNUM . . . . . . . . . . . . . .  	L BYTE	01D7	DATA
+SOBUF  . . . . . . . . . . . . .  	L BYTE	01D1	DATA	Length = 0006
+START  . . . . . . . . . . . . .  	L NEAR	0000	CODE
+STRING1  . . . . . . . . . . . .  	L BYTE	01E5	DATA
+STRING2  . . . . . . . . . . . .  	L BYTE	0207	DATA	Length = 0020
+STRING3  . . . . . . . . . . . .  	L BYTE	0227	DATA	Length = 0020
+
+TAB  . . . . . . . . . . . . . .  	L NEAR	00BF	CODE
+TAB1 . . . . . . . . . . . . . .  	L NEAR	02FF	CODE
+TAB2 . . . . . . . . . . . . . .  	L NEAR	03A7	CODE
+TAB3 . . . . . . . . . . . . . .  	L NEAR	0428	CODE
+TAB4 . . . . . . . . . . . . . .  	L NEAR	04DA	CODE
+TAGAIN . . . . . . . . . . . . .  	L NEAR	03EF	CODE
+THIRD  . . . . . . . . . . . . .  	N PROC	03B6	CODE	Length = 0081
+TIS1 . . . . . . . . . . . . . .  	L BYTE	0064	DATA
+TIS2 . . . . . . . . . . . . . .  	L BYTE	0083	DATA
+TIS3 . . . . . . . . . . . . . .  	L BYTE	0098	DATA
+TIS4 . . . . . . . . . . . . . .  	L BYTE	00B3	DATA
+TIS5 . . . . . . . . . . . . . .  	L BYTE	00C9	DATA
+TIS6 . . . . . . . . . . . . . .  	L BYTE	00EA	DATA
+TIS7 . . . . . . . . . . . . . .  	L BYTE	0106	DATA
+TIS8 . . . . . . . . . . . . . .  	L BYTE	0122	DATA
+TIS9 . . . . . . . . . . . . . .  	L BYTE	0128	DATA
+TSHIS  . . . . . . . . . . . . .  	L NEAR	041A	CODE
+TUIC . . . . . . . . . . . . . .  	L NEAR	00C5	CODE
+TUIC1  . . . . . . . . . . . . .  	L NEAR	0305	CODE
+TUIC2  . . . . . . . . . . . . .  	L NEAR	03AD	CODE
+TUIC3  . . . . . . . . . . . . .  	L NEAR	042E	CODE
+TUIC4  . . . . . . . . . . . . .  	L NEAR	04E0	CODE
+
+UPPER  . . . . . . . . . . . . .  	L NEAR	0487	CODE
+
+YEAR . . . . . . . . . . . . . .  	L BYTE	0154	DATA
+
+@FILENAME  . . . . . . . . . . .  	TEXT  aaaaa		
+
+Microsoft (R) Macro Assembler Version 5.00                  11/24/14 21:18:33
+                                                             Symbols-3
+
+
+
+    422 Source  Lines
+    902 Total   Lines
+     79 Symbols
+
+  49688 + 382888 Bytes symbol space free
+
+      2 Warning Errors
+      0 Severe  Errors
